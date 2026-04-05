@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=2" />
   </head>
   <body data-page="home">
     <div class="bg-mesh" aria-hidden="true"></div>
@@ -35,95 +35,114 @@
       <section class="setup-panel card-elevated animate-in delay-1">
         <h2 class="panel-title">Configure your session</h2>
 
-        <div class="form-grid">
-          <fieldset class="field field-full mode-phase">
-            <legend class="field-label">Session type</legend>
-            <div class="mode-picker" role="radiogroup" aria-label="Session type">
-              <label class="mode-card">
-                <input type="radio" name="sessionFlow" value="final_exam" id="flowFinalExam" />
-                <span class="mode-card-title">Final exam mode</span>
-                <span class="mode-card-desc muted small">40 questions · 10 per section (A–D) · 2-hour timer · no feedback until the end</span>
-              </label>
-              <label class="mode-card">
-                <input type="radio" name="sessionFlow" value="practice" id="flowPractice" checked />
-                <span class="mode-card-title">Practice mode</span>
-                <span class="mode-card-desc muted small">Choose one section or the full bank · self-paced · optional instant reveal</span>
-              </label>
+        <!-- Step 1: session type only (avoids cramped two-column layout on narrow / older browsers) -->
+        <div id="setupPhasePick" class="setup-phase-pick">
+          <p id="setupLoadLine" class="hint muted">Loading question bank…</p>
+          <div id="setupModeChoices" class="hidden" aria-hidden="true">
+            <p class="field-label">Session type</p>
+            <p class="muted small setup-phase-intro">Choose one — you’ll configure details on the next step.</p>
+            <div class="mode-choice-stack" role="group" aria-label="Session type">
+              <button type="button" class="mode-choice-btn" id="pickFinalExam" aria-describedby="pickFinalExamDesc">
+                <span class="mode-choice-title">Final exam mode</span>
+                <span class="mode-choice-desc muted small" id="pickFinalExamDesc"
+                  >40 questions · 10 per section (A–D) · 2-hour timer · no feedback until the end</span
+                >
+              </button>
+              <button type="button" class="mode-choice-btn" id="pickPractice" aria-describedby="pickPracticeDesc">
+                <span class="mode-choice-title">Practice mode</span>
+                <span class="mode-choice-desc muted small" id="pickPracticeDesc"
+                  >One section or the full bank · self-paced · optional instant reveal</span
+                >
+              </button>
             </div>
-          </fieldset>
-
-          <div id="panelFinalExam" class="field field-full hidden" aria-live="polite">
-            <div class="exam-summary">
-              <p class="exam-summary-lead">
-                You are about to start a <strong>40-question</strong> balanced exam with a <strong>2-hour</strong> countdown timer.
-              </p>
-              <p class="muted small">
-                Questions are drawn at random: exactly <strong>10</strong> from each of sections <strong>A</strong>, <strong>B</strong>,
-                <strong>C</strong>, and <strong>D</strong>, then shuffled. You will not see correct answers or explanations until you finish.
-              </p>
-            </div>
-            <ul class="exam-summary-table muted small">
-              <li><span>Questions</span><span>40 (fixed)</span></li>
-              <li><span>Timer</span><span>120 minutes (countdown)</span></li>
-              <li><span>Distribution</span><span>10 per section, random</span></li>
-            </ul>
-          </div>
-
-          <div id="panelPractice" class="field field-full practice-config">
-            <fieldset class="practice-scope-field">
-              <legend class="field-label">Topic scope</legend>
-              <div class="scope-radios">
-                <label class="field-row scope-row">
-                  <input type="radio" name="practiceScope" value="single_section" id="practiceScopeSingle" checked />
-                  <span class="check-label">Single section</span>
-                </label>
-                <label class="field-row scope-row">
-                  <input type="radio" name="practiceScope" value="all_topics" id="practiceScopeAll" />
-                  <span class="check-label">All topics</span>
-                </label>
-              </div>
-            </fieldset>
-
-            <label class="field" id="practiceSectionField">
-              <span class="field-label">Section</span>
-              <select id="practiceSectionSelect" class="input-select" aria-label="Section for practice"></select>
-            </label>
-
-            <label class="field">
-              <span class="field-label">Questions this session</span>
-              <input
-                type="number"
-                id="practiceSessionSize"
-                class="input-text"
-                min="10"
-                max="50"
-                value="20"
-                inputmode="numeric"
-              />
-              <span id="practiceCountHint" class="muted small">Random sample each time (10–50 for one section).</span>
-            </label>
-
-            <label class="field field-row field-full">
-              <input type="checkbox" id="examPatternToggle" class="input-check" />
-              <span class="check-label"
-                ><strong>Exam-style run</strong> — hide correct/incorrect and explanations until you finish this session.</span
-              >
-            </label>
-
-            <label class="field field-row field-full">
-              <input type="checkbox" id="autoRevealToggle" class="input-check" />
-              <span class="check-label"
-                >Reveal answer as soon as I select an option
-                <span class="muted">(practice only; disabled during exam-style run)</span></span
-              >
-            </label>
           </div>
         </div>
 
-        <p id="questionCountHint" class="hint muted">Loading question bank…</p>
+        <!-- Step 2: details + start (hidden until a mode is chosen) -->
+        <div id="setupPhaseDetails" class="setup-phase-details hidden" aria-live="polite">
+          <div class="setup-phase-bar">
+            <p class="setup-phase-chosen" id="chosenModeLabel"></p>
+            <button type="button" class="btn btn-ghost change-mode-btn" id="changeModeBtn">Change session type</button>
+          </div>
 
-        <div class="actions">
-          <button type="button" id="startBtn" class="btn btn-primary btn-lg">Start quiz</button>
+          <!-- Synced from step-1 buttons; kept for settings + legacy logic -->
+          <input type="radio" name="sessionFlow" id="flowFinalExam" value="final_exam" class="visually-hidden" tabindex="-1" />
+          <input type="radio" name="sessionFlow" id="flowPractice" value="practice" class="visually-hidden" tabindex="-1" />
+
+          <div class="form-grid">
+            <div id="panelFinalExam" class="field field-full hidden">
+              <div class="exam-summary">
+                <p class="exam-summary-lead">
+                  You are about to start a <strong>40-question</strong> balanced exam with a <strong>2-hour</strong> countdown timer.
+                </p>
+                <p class="muted small">
+                  Questions are drawn at random: exactly <strong>10</strong> from each of sections <strong>A</strong>, <strong>B</strong>,
+                  <strong>C</strong>, and <strong>D</strong>, then shuffled. You will not see correct answers or explanations until you finish.
+                </p>
+              </div>
+              <ul class="exam-summary-table muted small">
+                <li><span>Questions</span><span>40 (fixed)</span></li>
+                <li><span>Timer</span><span>120 minutes (countdown)</span></li>
+                <li><span>Distribution</span><span>10 per section, random</span></li>
+              </ul>
+            </div>
+
+            <div id="panelPractice" class="field field-full practice-config hidden">
+              <fieldset class="practice-scope-field">
+                <legend class="field-label">Topic scope</legend>
+                <div class="scope-radios">
+                  <label class="field-row scope-row">
+                    <input type="radio" name="practiceScope" value="single_section" id="practiceScopeSingle" checked />
+                    <span class="check-label">Single section</span>
+                  </label>
+                  <label class="field-row scope-row">
+                    <input type="radio" name="practiceScope" value="all_topics" id="practiceScopeAll" />
+                    <span class="check-label">All topics</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <label class="field" id="practiceSectionField">
+                <span class="field-label">Section</span>
+                <select id="practiceSectionSelect" class="input-select" aria-label="Section for practice"></select>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Questions this session</span>
+                <input
+                  type="number"
+                  id="practiceSessionSize"
+                  class="input-text"
+                  min="10"
+                  max="50"
+                  value="20"
+                  inputmode="numeric"
+                />
+                <span id="practiceCountHint" class="muted small">Random sample each time (10–50 for one section).</span>
+              </label>
+
+              <label class="field field-row field-full">
+                <input type="checkbox" id="examPatternToggle" class="input-check" />
+                <span class="check-label"
+                  ><strong>Exam-style run</strong> — hide correct/incorrect and explanations until you finish this session.</span
+                >
+              </label>
+
+              <label class="field field-row field-full">
+                <input type="checkbox" id="autoRevealToggle" class="input-check" />
+                <span class="check-label"
+                  >Reveal answer as soon as I select an option
+                  <span class="muted">(practice only; disabled during exam-style run)</span></span
+                >
+              </label>
+            </div>
+          </div>
+
+          <p id="questionCountHint" class="hint muted"></p>
+
+          <div class="actions">
+            <button type="button" id="startBtn" class="btn btn-primary btn-lg">Start quiz</button>
+          </div>
         </div>
       </section>
     </main>
@@ -132,6 +151,6 @@
       <p>Pure front-end — add your own items in <code>questions.json</code>.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
   </body>
 </html>

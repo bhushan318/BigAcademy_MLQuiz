@@ -163,6 +163,14 @@
   async function initHome() {
     const flowFinal = $("#flowFinalExam");
     const flowPractice = $("#flowPractice");
+    const setupPhasePick = $("#setupPhasePick");
+    const setupPhaseDetails = $("#setupPhaseDetails");
+    const setupLoadLine = $("#setupLoadLine");
+    const setupModeChoices = $("#setupModeChoices");
+    const pickFinalExam = $("#pickFinalExam");
+    const pickPractice = $("#pickPractice");
+    const changeModeBtn = $("#changeModeBtn");
+    const chosenModeLabel = $("#chosenModeLabel");
     const panelFinal = $("#panelFinalExam");
     const panelPractice = $("#panelPractice");
     const practiceScopeSingle = $("#practiceScopeSingle");
@@ -175,6 +183,9 @@
     const hint = $("#questionCountHint");
     const startBtn = $("#startBtn");
 
+    pickFinalExam.disabled = true;
+    pickPractice.disabled = true;
+
     function syncExamAutoRevealUi() {
       const ex = examPatternToggle.checked;
       autoRevealToggle.disabled = ex;
@@ -185,11 +196,33 @@
       return flowFinal.checked;
     }
 
+    function hasChosenSessionMode() {
+      return flowFinal.checked || flowPractice.checked;
+    }
+
     function syncFlowPanels() {
       const final = isFinalFlow();
       panelFinal.classList.toggle("hidden", !final);
       panelPractice.classList.toggle("hidden", final);
       startBtn.textContent = final ? "Start final exam" : "Start quiz";
+    }
+
+    function revealStepDetails() {
+      setupPhasePick.classList.add("hidden");
+      setupPhaseDetails.classList.remove("hidden");
+      syncFlowPanels();
+      syncPracticeScopeLimits();
+      syncExamAutoRevealUi();
+      updateHint();
+    }
+
+    function backToStepPick() {
+      flowFinal.checked = false;
+      flowPractice.checked = false;
+      setupPhaseDetails.classList.add("hidden");
+      setupPhasePick.classList.remove("hidden");
+      hint.textContent = "";
+      startBtn.disabled = true;
     }
 
     function syncPracticeScopeLimits() {
@@ -252,6 +285,8 @@
     }
 
     function updateHint() {
+      if (!hasChosenSessionMode()) return;
+
       if (isFinalFlow()) {
         if (!isFinalExamBankReady(allQuestions)) {
           const counts = EXAM_SECTION_KEYS.map((s) => `${s}: ${questionsInSection(allQuestions, s).length}`).join(", ");
@@ -308,10 +343,17 @@
     try {
       allQuestions = await loadQuestions();
     } catch (e) {
-      hint.textContent = "Error loading questions: " + e.message;
-      startBtn.disabled = true;
+      setupLoadLine.textContent = "Error loading questions: " + e.message;
+      pickFinalExam.disabled = true;
+      pickPractice.disabled = true;
       return;
     }
+
+    setupLoadLine.classList.add("hidden");
+    setupModeChoices.classList.remove("hidden");
+    setupModeChoices.removeAttribute("aria-hidden");
+    pickFinalExam.disabled = false;
+    pickPractice.disabled = false;
 
     practiceSectionSelect.innerHTML = "";
     EXAM_SECTION_KEYS.forEach((sec) => {
@@ -322,13 +364,24 @@
       practiceSectionSelect.appendChild(opt);
     });
 
-    function onFlowChange() {
-      syncFlowPanels();
-      updateHint();
-    }
+    pickFinalExam.addEventListener("click", () => {
+      flowFinal.checked = true;
+      flowPractice.checked = false;
+      chosenModeLabel.textContent = "Selected: Final exam mode";
+      revealStepDetails();
+    });
 
-    flowFinal.addEventListener("change", onFlowChange);
-    flowPractice.addEventListener("change", onFlowChange);
+    pickPractice.addEventListener("click", () => {
+      flowPractice.checked = true;
+      flowFinal.checked = false;
+      chosenModeLabel.textContent = "Selected: Practice mode";
+      revealStepDetails();
+    });
+
+    changeModeBtn.addEventListener("click", () => {
+      backToStepPick();
+    });
+
     practiceScopeSingle.addEventListener("change", () => {
       clampPracticeCountAfterScopeChange();
       $("#practiceSectionField").classList.remove("hidden");
@@ -348,13 +401,11 @@
     });
     autoRevealToggle.addEventListener("change", updateHint);
 
-    syncFlowPanels();
-    syncPracticeScopeLimits();
-    syncExamAutoRevealUi();
-    updateHint();
+    startBtn.disabled = true;
 
     startBtn.addEventListener("click", (e) => {
       e.preventDefault();
+      if (!hasChosenSessionMode()) return;
       const settings = collectSettings();
       if (settings.sessionFlow === "final_exam") {
         if (!isFinalExamBankReady(allQuestions)) return;

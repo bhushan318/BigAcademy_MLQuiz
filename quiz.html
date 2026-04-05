@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz — ML Question Bank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="quiz">
+    <div class="bg-mesh" aria-hidden="true"></div>
+    <header class="site-header quiz-header">
+      <a href="index.html" class="logo subtle-link">← Home</a>
+      <div class="quiz-header-meta">
+        <span id="timerDisplay" class="timer-chip hidden" role="timer" aria-live="polite">0:00</span>
+        <span id="scoreChip" class="score-chip" aria-live="polite"
+          >Score: <strong id="scoreLive">0</strong></span
+        >
+        <span id="examBadge" class="timer-chip hidden" aria-hidden="true">Exam mode</span>
+        <button type="button" class="btn-icon theme-toggle" aria-label="Toggle dark mode">
+          <span class="icon-sun" aria-hidden="true">☀</span>
+          <span class="icon-moon" aria-hidden="true">☾</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="quiz-main">
+      <div class="progress-wrap animate-in">
+        <div class="progress-label">
+          <span id="progressText">Question 1 of 10</span>
+          <span id="topicBadge" class="badge"></span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <article class="question-card card-elevated animate-in delay-1" id="questionCard">
+        <div class="question-meta">
+          <span class="badge badge-topic" id="qTopic"></span>
+          <span class="badge badge-diff" id="qDifficulty"></span>
+        </div>
+        <h2 class="question-text" id="questionText"></h2>
+        <ul class="options-list" id="optionsList" role="radiogroup" aria-labelledby="questionText"></ul>
+
+        <div class="quiz-actions-row">
+          <button type="button" class="btn btn-ghost" id="prevBtn" disabled>Previous</button>
+          <button type="button" class="btn btn-secondary" id="submitBtn" disabled>Check answer</button>
+          <button type="button" class="btn btn-primary hidden" id="nextBtn">Next</button>
+        </div>
+
+        <div class="feedback-panel hidden" id="feedbackPanel">
+          <p class="feedback-verdict" id="feedbackVerdict"></p>
+          <div class="explanation-block" id="explanationBlock">
+            <h3 class="explanation-title">Explanation</h3>
+            <p class="explanation-text" id="explanationText"></p>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

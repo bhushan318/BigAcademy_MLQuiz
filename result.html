@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results — ML Question Bank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="result">
+    <div class="bg-mesh" aria-hidden="true"></div>
+    <header class="site-header">
+      <a href="index.html" class="logo subtle-link">← Home</a>
+      <button type="button" class="btn-icon theme-toggle" aria-label="Toggle dark mode">
+        <span class="icon-sun" aria-hidden="true">☀</span>
+        <span class="icon-moon" aria-hidden="true">☾</span>
+      </button>
+    </header>
+
+    <main class="result-main">
+      <section class="result-hero card-elevated animate-in">
+        <p class="eyebrow">Session complete</p>
+        <h1>Your results</h1>
+        <p class="muted small" style="max-width: 36ch; margin: 0 auto 1rem">
+          Percentage and ring reflect <strong>auto-scored MCQ</strong> only (Sections A &amp; B). Written items are for self-marking.
+        </p>
+        <div class="result-stats">
+          <div class="stat-ring-wrap">
+            <svg class="stat-ring" viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="ring-bg" cx="60" cy="60" r="52" />
+              <circle class="ring-fg" id="scoreRing" cx="60" cy="60" r="52" />
+            </svg>
+            <div class="stat-ring-label">
+              <span class="stat-pct" id="scorePercent">0%</span>
+              <span class="muted small">score</span>
+            </div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-item">
+              <span class="stat-value" id="correctCount">0</span>
+              <span class="stat-label">Correct</span>
+            </div>
+            <div class="stat-item stat-wrong">
+              <span class="stat-value" id="wrongCount">0</span>
+              <span class="stat-label">Wrong</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="practiceCount">0</span>
+              <span class="stat-label">Self-check viewed</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="mcqTotal">0</span>
+              <span class="stat-label">MCQ items</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="timeElapsed">—</span>
+              <span class="stat-label">Time</span>
+            </div>
+          </div>
+        </div>
+        <div class="actions result-actions">
+          <a href="index.html" class="btn btn-primary">New quiz</a>
+          <a href="quiz.html" class="btn btn-ghost" id="retrySameBtn">Same filters again</a>
+        </div>
+      </section>
+
+      <section class="review-section animate-in delay-1">
+        <h2 class="panel-title">Review answers</h2>
+        <p class="muted review-hint">Expand each row to see the explanation.</p>
+        <div class="review-list" id="reviewList"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer muted">
+      <p>Tip: use <strong>New quiz</strong> to change topic or difficulty.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

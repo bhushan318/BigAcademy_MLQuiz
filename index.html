@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive ML Question Bank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="home">
+    <div class="bg-mesh" aria-hidden="true"></div>
+    <header class="site-header">
+      <a href="index.html" class="logo">ML<span>Quiz</span></a>
+      <button type="button" class="btn-icon theme-toggle" aria-label="Toggle dark mode" title="Theme">
+        <span class="icon-sun" aria-hidden="true">☀</span>
+        <span class="icon-moon" aria-hidden="true">☾</span>
+      </button>
+    </header>
+
+    <main class="home-main">
+      <section class="hero card-elevated animate-in">
+        <p class="eyebrow">Practice & revise</p>
+        <h1>Interactive ML Question Bank</h1>
+        <p class="lead">
+          Work through data analytics and machine learning questions at your pace. Instant feedback,
+          explanations, and a full review when you finish.
+        </p>
+      </section>
+
+      <section class="setup-panel card-elevated animate-in delay-1">
+        <h2 class="panel-title">Configure your session</h2>
+
+        <div class="form-grid">
+          <label class="field">
+            <span class="field-label">Topic</span>
+            <select id="topicSelect" class="input-select">
+              <option value="">All topics</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Difficulty</span>
+            <select id="difficultySelect" class="input-select">
+              <option value="">All levels</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </label>
+
+          <label class="field field-full">
+            <span class="field-label">Search questions</span>
+            <input
+              type="search"
+              id="searchInput"
+              class="input-text"
+              placeholder="e.g. recall, k-means, overfitting…"
+              autocomplete="off"
+            />
+          </label>
+
+          <label class="field field-row field-full">
+            <input type="checkbox" id="timerToggle" class="input-check" />
+            <span class="check-label">Enable timer (count-up)</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Questions this session</span>
+            <input
+              type="number"
+              id="sessionSizeInput"
+              class="input-text"
+              min="1"
+              value="10"
+              inputmode="numeric"
+            />
+            <span class="muted small">Random sample from your filters (max = pool size).</span>
+          </label>
+
+          <label class="field field-row field-full">
+            <input type="checkbox" id="shuffleToggle" class="input-check" checked />
+            <span class="check-label">Shuffle order</span>
+          </label>
+
+          <label class="field field-row field-full">
+            <input type="checkbox" id="examPatternToggle" class="input-check" />
+            <span class="check-label"
+              ><strong>Final exam pattern</strong> — no correct/incorrect or explanations until you finish the session (like the paper exam).</span
+            >
+          </label>
+
+          <label class="field field-row field-full">
+            <input type="checkbox" id="autoRevealToggle" class="input-check" />
+            <span class="check-label"
+              >Reveal answer as soon as I select an option <span class="muted">(practice only; off during final exam pattern)</span></span
+            >
+          </label>
+
+          <div class="field field-full">
+            <button type="button" id="examPresetBtn" class="btn btn-ghost" style="width: 100%">
+              Load Section A exam preset (10 MCQs, shuffled, timer, exam pattern)
+            </button>
+            <span class="muted small">Sets topic to Section A, 10 questions, shuffle, timer, and final exam pattern. Adjust if you like.</span>
+          </div>
+        </div>
+
+        <p id="questionCountHint" class="hint muted">Loading question bank…</p>
+
+        <div class="actions">
+          <button type="button" id="startBtn" class="btn btn-primary btn-lg">Start quiz</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer muted">
+      <p>Pure front-end — add your own items in <code>questions.json</code>.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

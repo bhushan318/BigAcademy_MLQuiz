@@ -1,0 +1,2808 @@
+[
+  {
+    "id": "A1",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Confusion matrix (positive = missed visit): TP=90, FP=20, FN=60, TN=430. Recall is:",
+    "options": [
+      "Recall = TP/(TP+FN) = 90/(90+60) = 60%",
+      "Precision = TP/(TP+FP) = 90/(90+20) = 81.8%",
+      "Accuracy = (TP+TN)/N = (90+430)/600 = 86.7%",
+      "F1 = 2×Precision×Recall/(Precision+Recall) ≈ 69%"
+    ],
+    "correct_answer": "Recall = TP/(TP+FN) = 90/(90+60) = 60%",
+    "explanation": "Recall = TP/(TP+FN). With TP=90, FN=60: Recall = 90/150 = 60%. Recall measures what fraction of actual positives (missed visits) the model correctly flagged.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A2",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Training accuracy is 92% but test accuracy is 58%. The best description is:",
+    "options": [
+      "The model is underfitting — both scores are too low to be useful.",
+      "This is normal variation due to random test-set selection; no action needed.",
+      "The model is well-generalised — 58% test accuracy is acceptable for most tasks.",
+      "Large gap between train and test accuracy → overfitting."
+    ],
+    "correct_answer": "Large gap between train and test accuracy → overfitting.",
+    "explanation": "Large gap between train and test accuracy → overfitting.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A3",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Which of the following is NOT a valid reason for doing data preprocessing before model training?",
+    "options": [
+      "Handling missing values to avoid model errors",
+      "Removing duplicate records to prevent bias",
+      "Encoding categorical variables into numbers",
+      "Increasing the size of the dataset by adding fake records"
+    ],
+    "correct_answer": "Increasing the size of the dataset by adding fake records",
+    "explanation": "Fabricating records solely to inflate size is not a valid generic preprocessing purpose.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A4",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "A HealthTrack analyst is building a model to predict whether a patient will miss their appointment (Yes/No). What type of ML problem is this?",
+    "options": [
+      "Regression",
+      "Binary Classification",
+      "Clustering",
+      "Dimensionality Reduction"
+    ],
+    "correct_answer": "Binary Classification",
+    "explanation": "Yes/No labelled outcome → binary classification.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A5",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "The RetailEdge decision tree model for churn prediction has a training accuracy of 99% but a test accuracy of 67%. This is a classic sign of:",
+    "options": [
+      "Underfitting",
+      "A good, well-generalised model",
+      "Overfitting",
+      "Data preprocessing error"
+    ],
+    "correct_answer": "Overfitting",
+    "explanation": "High train, low test → overfitting (memorised training noise).",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A6",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "A clinical column is missing in 75% of rows. Before imputing blindly, best practice is to:",
+    "options": [
+      "Always impute with the column mean — this preserves all rows for training.",
+      "Fill all missing values with 0 to signal absence of the measurement.",
+      "Drop only the rows that are missing the value, keeping the column intact.",
+      "Very high missing rate → review clinical/business importance before blind impute vs drop."
+    ],
+    "correct_answer": "Very high missing rate → review clinical/business importance before blind impute vs drop.",
+    "explanation": "Very high missing rate → review clinical/business importance before blind impute vs drop. Expand in your answer: define terms, give one example, and (where relevant) name a business or clinical consequence.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A7",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "To help choose K in K-Means, a common plot is K versus:",
+    "options": [
+      "Silhouette score is the only valid method; elbow plots are unreliable.",
+      "Cross-validation accuracy on a held-out labelled set.",
+      "The p-value from a t-test between cluster centroids.",
+      "Elbow / inertia plots help choose K in K-Means."
+    ],
+    "correct_answer": "Elbow / inertia plots help choose K in K-Means.",
+    "explanation": "Elbow / inertia plots help choose K in K-Means.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A8",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "A RetailEdge analyst says: *\"Our Linear Regression model has an R² score of 0.87.\"* What does this mean?",
+    "options": [
+      "87% of predictions are correct",
+      "The model makes errors on 13% of customers",
+      "The model explains 87% of the variance in customer annual spend",
+      "87 out of 100 features are significant"
+    ],
+    "correct_answer": "The model explains 87% of the variance in customer annual spend",
+    "explanation": "R² = proportion of variance in the target explained by the model — not “% predictions correct” or count of significant features.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A9",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Early stopping during training mainly helps to:",
+    "options": [
+      "Speed up training by reducing the number of input features.",
+      "Increase model complexity by adding layers when training loss plateaus.",
+      "Ensure the model trains on the full dataset including validation rows.",
+      "Early stopping uses validation performance to curb overfitting."
+    ],
+    "correct_answer": "Early stopping uses validation performance to curb overfitting.",
+    "explanation": "Early stopping uses validation performance to curb overfitting.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A10",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "HealthTrack wants to group its 45 clinics into performance segments without any pre-existing labels. The MOST appropriate algorithm is:",
+    "options": [
+      "Linear Regression",
+      "Logistic Regression",
+      "K-Means Clustering",
+      "Decision Tree"
+    ],
+    "correct_answer": "K-Means Clustering",
+    "explanation": "No labels → unsupervised → K-Means among the options.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A11",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Multicollinearity among predictors means:",
+    "options": [
+      "Multiple target variables are being predicted simultaneously.",
+      "The model has too many layers and cannot converge.",
+      "Predictor variables have different units and need to be scaled.",
+      "Multicollinearity = strong linear relationships among predictors."
+    ],
+    "correct_answer": "Multicollinearity = strong linear relationships among predictors.",
+    "explanation": "Multicollinearity = strong linear relationships among predictors.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A12",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Predicting email spam vs not spam (two labels) is:",
+    "options": [
+      "A regression problem — spam scores are continuous probabilities.",
+      "Unsupervised learning — there are no labels in a real inbox.",
+      "Multi-class classification — spam can have many sub-categories.",
+      "Yes/No outcome → binary classification."
+    ],
+    "correct_answer": "Yes/No outcome → binary classification.",
+    "explanation": "Yes/No outcome → binary classification.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A13",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "HealthTrack's patient dataset has 12,000 rows. The `diagnosis_code` column is missing in 5,100 rows (42.5% of all rows). Following best practices, what should the analyst do?",
+    "options": [
+      "Fill all missing values with the most common diagnosis code",
+      "Fill all missing values with \"Unknown\"",
+      "Keep the column but ignore it during training",
+      "Drop the column — more than 40% missing data makes it unreliable"
+    ],
+    "correct_answer": "Drop the column — more than 40% missing data makes it unreliable",
+    "explanation": "At >40% missing, the listed best option is drop the column as unreliable (vs blind imputation). Note: In practice you might also assess clinical importance first; the question tests the stated rubric.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A14",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "After training a churn prediction model, the team evaluates it and gets these results:\n\n| | Predicted Churn | Predicted Stayed |\n|--|--|--|\n| Actual Churn | 90 | 10 |\n| Actual Stayed | 20 | 280 |\n\nWhat is the accuracy of this model?",
+    "options": [
+      "85%",
+      "90%",
+      "92.5%",
+      "94%"
+    ],
+    "correct_answer": "92.5%",
+    "explanation": "Accuracy = (TP + TN) / N = (90 + 280) / 400 = 370/400 = 92.5% (positive class = churn).",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A15",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Before K-Means on mixed numeric features (age, income, score), you should usually:",
+    "options": [
+      "One-hot encode all numeric features to convert them to binary columns.",
+      "Remove any feature with a mean above 100 to avoid centroid distortion.",
+      "Apply PCA to reduce to exactly 2 dimensions before any clustering.",
+      "Distance-based clustering needs comparable feature scales — standardise or scale."
+    ],
+    "correct_answer": "Distance-based clustering needs comparable feature scales — standardise or scale.",
+    "explanation": "Distance-based clustering needs comparable feature scales — standardise or scale. Expand in your answer: define terms, give one example, and (where relevant) name a business or clinical consequence.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A16",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "TP=40, FP=10, FN=20, TN=930. Accuracy is:",
+    "options": [
+      "Accuracy = TP/(TP+FP) = 40/50 = 80%",
+      "Accuracy = TP/(TP+FN) = 40/60 = 66.7%",
+      "Accuracy = (TP+FP)/N = 50/1000 = 5%",
+      "Accuracy = (TP+TN)/N = (40+930)/1000 = 97%"
+    ],
+    "correct_answer": "Accuracy = (TP+TN)/N = (40+930)/1000 = 97%",
+    "explanation": "Accuracy = (TP+TN)/N = (40+930)/1000 = 970/1000 = 97%. With TP=40, FP=10, FN=20, TN=930, N=1000.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A17",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "HealthTrack stores patient records in three relational database tables: *Patients*, *Appointments*, and *Diagnoses*. A machine learning model CANNOT be trained directly on these tables because:",
+    "options": [
+      "The tables use different database software",
+      "Machine learning models only work with images, not tabular data",
+      "Machine learning algorithms require a single, flat table where each row represents one complete observation",
+      "The data needs to be converted to JSON format first"
+    ],
+    "correct_answer": "Machine learning algorithms require a single, flat table where each row represents one complete observation",
+    "explanation": "Algorithms need one flat row per observation with all inputs aligned — join/denormalise first.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A18",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Encoding ward name (no natural order) for a linear model typically requires:",
+    "options": [
+      "Ordinal encoding — assign integers 1 to N alphabetically.",
+      "Label encoding with values 0 to K-1 preserves ordinal relationships.",
+      "Binary encoding — convert the integer label to binary bits.",
+      "Unordered categories → nominal → one-hot or equivalent."
+    ],
+    "correct_answer": "Unordered categories → nominal → one-hot or equivalent.",
+    "explanation": "Unordered categories → nominal → one-hot or equivalent.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A19",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "The silhouette score for clusters is commonly interpreted in the range:",
+    "options": [
+      "Silhouette ranges from 0 to 1, where 1 means perfect separation.",
+      "Silhouette ranges from 0 to infinity — no upper bound exists.",
+      "Silhouette ranges from −100 to +100 as a percentage.",
+      "Silhouette is commonly interpreted in [−1, +1]."
+    ],
+    "correct_answer": "Silhouette is commonly interpreted in [−1, +1].",
+    "explanation": "Silhouette is commonly interpreted in [−1, +1].",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A20",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "RetailEdge's customer data is stored across multiple relational database tables (customers, transactions, products). Before training a machine learning model, this data must be:",
+    "options": [
+      "Split into training and testing sets immediately",
+      "Joined and flattened into a single table where each row is one customer",
+      "Converted into text format for NLP processing",
+      "Stored in a NoSQL database for better performance"
+    ],
+    "correct_answer": "Joined and flattened into a single table where each row is one customer",
+    "explanation": "Tabular ML needs one flat row per customer with all features together — join/denormalise first; splitting train/test comes after you have an analytic table.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A21",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Model A has R² = 0.71 and model B R² = 0.86 on the same validated regression task. Prefer:",
+    "options": [
+      "Model A — lower R² indicates a simpler, less overfit model.",
+      "Neither model is acceptable; R² must exceed 0.90 for deployment.",
+      "R² alone is insufficient — always choose the model with lower training RMSE.",
+      "Higher R² → more variance explained → prefer that model for the same task if validated."
+    ],
+    "correct_answer": "Higher R² → more variance explained → prefer that model for the same task if validated.",
+    "explanation": "Higher R² → more variance explained → prefer that model for the same task if validated. Expand in your answer: define terms, give one example, and (where relevant) name a business or clinical consequence.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A22",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "HealthTrack's treatment cost prediction model gives an R² of 0.65. A new improved model gives R² of 0.82. Which model should be deployed and why?",
+    "options": [
+      "The first model, because 0.65 is a safer estimate",
+      "Either model, R² doesn't matter for healthcare",
+      "The second model — R² of 0.82 means it explains 82% of cost variance, significantly better",
+      "Neither — you need at least R² of 0.95 for real-world use"
+    ],
+    "correct_answer": "The second model — R² of 0.82 means it explains 82% of cost variance, significantly better",
+    "explanation": "Higher R² → more variance explained → prefer improved model (subject to validation on held-out data in real deployment).",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A23",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "For k classes, the confusion matrix shape is:",
+    "options": [
+      "A confusion matrix is always 2×2 regardless of class count.",
+      "For k classes the matrix is k×2 — one column per binary outcome.",
+      "For k classes the matrix is 2×k — one row per actual vs predicted.",
+      "k-class confusion matrix is k×k."
+    ],
+    "correct_answer": "k-class confusion matrix is k×k.",
+    "explanation": "k-class confusion matrix is k×k.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A24",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Poor fit on both training and validation data usually indicates:",
+    "options": [
+      "High train accuracy with low validation accuracy → overfitting.",
+      "The model has too many parameters and needs regularisation.",
+      "The validation set is too small to give a reliable estimate.",
+      "Poor fit on both train and validation → underfitting."
+    ],
+    "correct_answer": "Poor fit on both train and validation → underfitting.",
+    "explanation": "Poor fit on both train and validation → underfitting.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A25",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Compared with one very deep decision tree, a Random Forest typically:",
+    "options": [
+      "Random Forest increases bias because it averages weak learners.",
+      "A single deep tree generalises better due to capturing all data patterns.",
+      "Random Forest always overfits more than a single tree because it has more parameters.",
+      "Random Forest reduces variance vs a single deep tree via bagging and averaging."
+    ],
+    "correct_answer": "Random Forest reduces variance vs a single deep tree via bagging and averaging.",
+    "explanation": "Random Forest reduces variance vs a single deep tree via bagging and averaging.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A26",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "A top concern called out for healthcare analytics ethics is:",
+    "options": [
+      "Maximising model accuracy is the primary ethical obligation in healthcare.",
+      "Patient data can be freely shared across institutions once anonymised.",
+      "Algorithmic decisions in healthcare require no human oversight if accuracy is high.",
+      "Healthcare analytics: privacy, fairness, transparency."
+    ],
+    "correct_answer": "Healthcare analytics: privacy, fairness, transparency.",
+    "explanation": "Healthcare analytics: privacy, fairness, transparency.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A27",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Logistic regression for classification primarily outputs:",
+    "options": [
+      "Logistic regression outputs a continuous numeric prediction like linear regression.",
+      "Logistic regression outputs the log of the odds ratio as the final prediction.",
+      "Logistic regression outputs only integer class labels, never probabilities.",
+      "Logistic regression outputs class probabilities or class labels."
+    ],
+    "correct_answer": "Logistic regression outputs class probabilities or class labels.",
+    "explanation": "Logistic regression outputs class probabilities or class labels.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A28",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "You need to predict annual revenue (a continuous amount). The most appropriate high-level task type is:",
+    "options": [
+      "Binary classification — split revenue into high vs low buckets first.",
+      "Clustering — group customers by similar revenue levels.",
+      "Multi-class classification — revenue bands form discrete categories.",
+      "Continuous target → regression (e.g. linear regression)."
+    ],
+    "correct_answer": "Continuous target → regression (e.g. linear regression).",
+    "explanation": "Continuous target → regression (e.g. linear regression).",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A29",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Grouping customers into segments when no segment labels exist is best approached with:",
+    "options": [
+      "Supervised classification — label each customer as a segment first, then train.",
+      "Logistic regression — predict segment membership from existing features.",
+      "Regression — predict a continuous segment score for each customer.",
+      "No labels → unsupervised clustering (e.g. K-Means)."
+    ],
+    "correct_answer": "No labels → unsupervised clustering (e.g. K-Means).",
+    "explanation": "No labels → unsupervised clustering (e.g. K-Means).",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A30",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Running `GridSearchCV` with 5-fold CV on a grid of hyperparameters causes sklearn to:",
+    "options": [
+      "GridSearchCV fits the model once and evaluates on 5 held-out test sets.",
+      "GridSearchCV trains on the test set to find the best hyperparameters.",
+      "GridSearchCV returns the mean training accuracy across all grid combinations.",
+      "GridSearchCV fits many times across folds and grid points."
+    ],
+    "correct_answer": "GridSearchCV fits many times across folds and grid points.",
+    "explanation": "GridSearchCV fits many times across folds and grid points.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A31",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "PCA is primarily used to:",
+    "options": [
+      "PCA is a supervised classification algorithm for high-dimensional data.",
+      "PCA removes correlated features by deleting one from each correlated pair.",
+      "PCA standardises features by transforming them to have zero mean and unit variance.",
+      "PCA is mainly for dimensionality reduction / variance directions."
+    ],
+    "correct_answer": "PCA is mainly for dimensionality reduction / variance directions.",
+    "explanation": "PCA is mainly for dimensionality reduction / variance directions.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A32",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "A standard ROC curve plots:",
+    "options": [
+      "ROC curve: precision vs recall at varying thresholds.",
+      "ROC curve: accuracy vs model complexity as regularisation increases.",
+      "ROC curve: true positive rate vs threshold value.",
+      "ROC curve: true positive rate vs false positive rate."
+    ],
+    "correct_answer": "ROC curve: true positive rate vs false positive rate.",
+    "explanation": "ROC curve: true positive rate vs false positive rate.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A33",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "If a learning curve still shows a large train–test gap as sample size grows, a sound next step is:",
+    "options": [
+      "The model is underfitting — increase model complexity to close the gap.",
+      "The gap is expected; learning curves always converge only with infinite data.",
+      "Switch to a simpler metric such as accuracy instead of F1 to eliminate the gap.",
+      "Persistent train–test gap as n grows → collect better/more data and/or simplify or regularise."
+    ],
+    "correct_answer": "Persistent train–test gap as n grows → collect better/more data and/or simplify or regularise.",
+    "explanation": "Persistent train–test gap as n grows → collect better/more data and/or simplify or regularise. Expand in your answer: define terms, give one example, and (where relevant) name a business or clinical consequence.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A34",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Train accuracy 99% and test accuracy 62% most strongly suggests:",
+    "options": [
+      "Train much lower than test → underfitting.",
+      "Both scores are acceptable; 62% test accuracy is reasonable for real-world use.",
+      "The model suffers from high bias — it needs more features to capture the data.",
+      "Train much higher than test → overfitting."
+    ],
+    "correct_answer": "Train much higher than test → overfitting.",
+    "explanation": "Train much higher than test → overfitting.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A35",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "After training a no-show prediction model at HealthTrack, the team gets:\n\n- Training Accuracy: 97%\n- Test Accuracy: 61%\n\nWhich term best describes this situation?",
+    "options": [
+      "Underfitting",
+      "A generalised model",
+      "Overfitting",
+      "High bias"
+    ],
+    "correct_answer": "Overfitting",
+    "explanation": "97% train vs 61% test → large gap → overfitting.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A36",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Predicting loan default (Yes/No) from applicant features is:",
+    "options": [
+      "Regression — predict the probability of default as a continuous score.",
+      "Multi-class classification — default risk has several severity levels.",
+      "Clustering — group applicants into defaulting and non-defaulting segments.",
+      "Default on loan Yes/No → binary classification."
+    ],
+    "correct_answer": "Default on loan Yes/No → binary classification.",
+    "explanation": "Default on loan Yes/No → binary classification.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A37",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Discovering groups in data without using outcome labels is:",
+    "options": [
+      "Supervised classification — train a model on pre-labelled group examples.",
+      "Regression — predict a numeric group membership score for each observation.",
+      "Semi-supervised learning — label a small subset then propagate to the rest.",
+      "Grouping without labels → unsupervised learning."
+    ],
+    "correct_answer": "Grouping without labels → unsupervised learning.",
+    "explanation": "Grouping without labels → unsupervised learning.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A38",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "The team wants to predict a customer's annual spend (a continuous number) based on their shopping frequency, basket size, and location. Which model type is most appropriate?",
+    "options": [
+      "K-Means Clustering",
+      "Logistic Regression",
+      "Decision Tree Classifier",
+      "Linear Regression"
+    ],
+    "correct_answer": "Linear Regression",
+    "explanation": "Continuous target → regression (e.g. linear regression). Logistic / tree classifier / K-Means are wrong task types here.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A39",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "On a 6% positive class, a model that always predicts the majority class can show high accuracy but be useless. This illustrates:",
+    "options": [
+      "High accuracy on the minority class means the model is correctly identifying positives.",
+      "A 94% accuracy on a 6% positive rate means precision must also be high.",
+      "This is an overfitting problem — reduce model complexity to lower accuracy.",
+      "Majority-class baseline inflates accuracy when classes are skewed."
+    ],
+    "correct_answer": "Majority-class baseline inflates accuracy when classes are skewed.",
+    "explanation": "Majority-class baseline inflates accuracy when classes are skewed.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A40",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "F1 score is best described as:",
+    "options": [
+      "F1 is the arithmetic mean of precision and recall.",
+      "F1 measures the proportion of all correct predictions out of total predictions.",
+      "F1 is the ratio of true positives to the total number of actual positives.",
+      "F1 balances precision and recall."
+    ],
+    "correct_answer": "F1 balances precision and recall.",
+    "explanation": "F1 balances precision and recall.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A41",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "RetailEdge wants to segment its 50,000 customers into groups without any predefined labels. Which type of machine learning is this?",
+    "options": [
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+      "Semi-supervised Learning"
+    ],
+    "correct_answer": "Unsupervised Learning",
+    "explanation": "No labels → unsupervised learning (e.g. clustering).",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A42",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Using `stratify=y` in `train_test_split` for classification mainly:",
+    "options": [
+      "Stratify ensures the training set is always larger than the test set.",
+      "Stratify randomly shuffles data before splitting to reduce sampling bias.",
+      "Stratify balances class counts in the training set by oversampling the minority.",
+      "Stratify preserves class proportions in train/test splits."
+    ],
+    "correct_answer": "Stratify preserves class proportions in train/test splits.",
+    "explanation": "Stratify preserves class proportions in train/test splits.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A43",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "In K-Means clustering, what does the algorithm minimise at each step?",
+    "options": [
+      "The number of clusters",
+      "The distance between cluster centroids",
+      "The within-cluster sum of squared distances (inertia)",
+      "The accuracy score"
+    ],
+    "correct_answer": "The within-cluster sum of squared distances (inertia)",
+    "explanation": "K-Means minimises within-cluster sum of squared distances (inertia).",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A44",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Which metric would be most useful if RetailEdge wants to ensure they catch as many churning customers as possible, even if it means occasionally flagging loyal customers as churners?",
+    "options": [
+      "Accuracy",
+      "Precision",
+      "Recall (Sensitivity)",
+      "Specificity"
+    ],
+    "correct_answer": "Recall (Sensitivity)",
+    "explanation": "“Catch as many churners as possible” → maximise recall (TP / (TP+FN)).",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A45",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "HealthTrack's no-show prediction model produces this confusion matrix (Positive = \"Will Miss\"):\n\n| | Predicted Miss | Predicted Attend |\n|--|--|--|\n| Actual Miss | 90 | 60 |\n| Actual Attend | 20 | 430 |\n\nWhat is the Recall (Sensitivity) of this model?",
+    "options": [
+      "81.8%",
+      "90%",
+      "96%",
+      "60%"
+    ],
+    "correct_answer": "60%",
+    "explanation": "Recall = TP / (TP + FN) = 90 / (90 + 60) = 90/150 = 0.60 = 60%.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A46",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "HealthTrack discovers that out of 12,000 patients, only 800 missed their appointment (6.7%). A simple model that predicts \"will attend\" for every patient achieves 93.3% accuracy. This demonstrates the problem of:",
+    "options": [
+      "Overfitting",
+      "High variance",
+      "Class imbalance — accuracy is misleading on imbalanced datasets",
+      "Underfitting"
+    ],
+    "correct_answer": "Class imbalance — accuracy is misleading on imbalanced datasets",
+    "explanation": "Rare positive class → majority baseline looks accurate → accuracy misleading; class imbalance issue.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A47",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "In the Elbow Method for K-Means, we plot K (number of clusters) against:",
+    "options": [
+      "Accuracy score",
+      "Inertia (within-cluster sum of squares)",
+      "R² score",
+      "Silhouette coefficient"
+    ],
+    "correct_answer": "Inertia (within-cluster sum of squares)",
+    "explanation": "Elbow plots inertia (within-cluster SS) vs K.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A48",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "The RetailEdge team discovered that 38% of values in the `customer_age` column are missing. Which is the best approach?",
+    "options": [
+      "Delete the entire dataset and collect new data",
+      "Drop all rows with missing values",
+      "Fill missing values with the median age",
+      "Replace missing values with the text \"unknown\""
+    ],
+    "correct_answer": "Fill missing values with the median age",
+    "explanation": "Median is robust for numeric age; dropping 38% of rows loses too much data; `\"unknown\"` as text breaks standard numeric pipelines without encoding.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A49",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "The `customer_tier` column in RetailEdge's dataset has values: Bronze, Silver, Gold, Platinum. For use in a Linear Regression model, this should be encoded as:",
+    "options": [
+      "Random integers (e.g. Gold=7, Bronze=3)",
+      "Text strings left as-is",
+      "Ordered numbers reflecting the hierarchy (Bronze=1, Silver=2, Gold=3, Platinum=4)",
+      "All converted to 1"
+    ],
+    "correct_answer": "Ordered numbers reflecting the hierarchy (Bronze=1, Silver=2, Gold=3, Platinum=4)",
+    "explanation": "Ordinal tier → preserve order with ordered integers (not random codes, not plain text in the design matrix).",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "A50",
+    "type": "mcq",
+    "scored": true,
+    "section": "A",
+    "question": "Compared with ordinary least squares, Ridge (L2) regression:",
+    "options": [
+      "Ridge (L1) shrinks some coefficients to exactly zero, performing feature selection.",
+      "Ridge adds a penalty term that increases the sum of absolute weight values.",
+      "Ridge reduces variance by removing features with small coefficients entirely.",
+      "Ridge (L2) penalises large weights smoothly."
+    ],
+    "correct_answer": "Ridge (L2) penalises large weights smoothly.",
+    "explanation": "Ridge (L2) penalises large weights smoothly.",
+    "difficulty": "medium",
+    "topic": "Section A — Multiple choice"
+  },
+  {
+    "id": "B1",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "Match Recall to the formula:",
+    "options": [
+      "(A) TP / (TP + FP)",
+      "(B) TP / (TP + FN)",
+      "(C) TN / (TN + FP)",
+      "(D) (TP + TN) / N"
+    ],
+    "correct_answer": "(B) TP / (TP + FN)",
+    "explanation": "B — Recall = TP/(TP+FN)",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B2",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: Recall for a binary classifier is computed as TP / (TP + FN).\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B3",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: In Linear Regression, a feature with a p-value of 0.73 is considered statistically significant.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "FALSE",
+    "explanation": "FALSE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B4",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "Match Gini Impurity to the correct description:",
+    "options": [
+      "(A) Proportion of actual positives correctly identified",
+      "(B) Measure of how spread out values are from the mean",
+      "(C) Proportion of predicted positives that are actually positive",
+      "(D) Evaluates how well-separated and compact clusters are",
+      "(E) Used by Decision Trees to measure how mixed a node is"
+    ],
+    "correct_answer": "(E) Used by Decision Trees to measure how mixed a node is",
+    "explanation": "E",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B5",
+    "type": "self_check",
+    "scored": false,
+    "section": "B",
+    "question": "Complete: The process of replacing missing numerical values with the average of existing values is called _______ imputation.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "mean",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B6",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "Match K-Means inertia to the description (choose one):",
+    "options": [
+      "(A) Within-cluster sum of squared distances to centroids",
+      "(B) Between-cluster sum of squared distances",
+      "(C) Silhouette width averaged over points",
+      "(D) Gini impurity of leaf nodes"
+    ],
+    "correct_answer": "(A) Within-cluster sum of squared distances to centroids",
+    "explanation": "A — K-Means inertia = within-cluster sum of squared distances",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B7",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: In data preprocessing, data collected directly from operational systems (a data lake) is generally cleaner and more reliable than data from a data warehouse.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "FALSE",
+    "explanation": "FALSE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B8",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: A confusion matrix can only be used for binary classification problems (two classes).\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "FALSE",
+    "explanation": "FALSE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B9",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "Match Underfitting to the correct description:",
+    "options": [
+      "(A) The model is too simple and doesn't capture patterns in the training data",
+      "(B) Uses majority vote of many trees to make predictions",
+      "(C) The model memorises training data but fails on new data",
+      "(D) Measures how well-separated clusters are (range -1 to +1)"
+    ],
+    "correct_answer": "(A) The model is too simple and doesn't capture patterns in the training data",
+    "explanation": "A",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B10",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: A model with very high training accuracy and very low test accuracy is said to be underfitting.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "FALSE",
+    "explanation": "FALSE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B11",
+    "type": "self_check",
+    "scored": false,
+    "section": "B",
+    "question": "Complete: K-fold cross-validation is a resampling scheme based on splitting data into ___ folds and rotating the validation role.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "K-fold (cross-validation)",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B12",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: Precision answers the question: \"Of all patients we predicted would miss, how many actually missed?\"\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B13",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: StandardScaler in sklearn subtracts the mean and scales by the standard deviation per feature (using training statistics when used in a pipeline correctly).\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B14",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: Logistic regression for classification is usually trained by minimising log loss (cross-entropy) on the training labels.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "Correct: TRUE. loss (log loss / cross-entropy for logistic training)",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B15",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "Match Random Forest to the correct description:",
+    "options": [
+      "(A) The model is too simple and doesn't capture patterns in the training data",
+      "(B) Uses majority vote of many trees to make predictions",
+      "(C) The model memorises training data but fails on new data",
+      "(D) Measures how well-separated clusters are (range -1 to +1)"
+    ],
+    "correct_answer": "(B) Uses majority vote of many trees to make predictions",
+    "explanation": "B",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B16",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: K-fold CV averages scores across folds to get a more stable estimate of generalisation than a single random split.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B17",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: The dummy-variable trap arises when all category dummies plus an intercept create perfect collinearity.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B18",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "Match Silhouette Score to the correct description:",
+    "options": [
+      "(A) The model is too simple and doesn't capture patterns in the training data",
+      "(B) Uses majority vote of many trees to make predictions",
+      "(C) The model memorises training data but fails on new data",
+      "(D) Measures how well-separated clusters are (range -1 to +1)"
+    ],
+    "correct_answer": "(D) Measures how well-separated clusters are (range -1 to +1)",
+    "explanation": "D",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B19",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "Match F1 score to the formula (choose one):",
+    "options": [
+      "(A) TP / (TP + FP)",
+      "(B) TP / (TP + FN)",
+      "(C) 2 · Precision · Recall / (Precision + Recall)",
+      "(D) (TP + TN) / N"
+    ],
+    "correct_answer": "(C) 2 · Precision · Recall / (Precision + Recall)",
+    "explanation": "F1",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B20",
+    "type": "self_check",
+    "scored": false,
+    "section": "B",
+    "question": "What is the usual name of the heuristic that plots K versus inertia to help choose cluster count? (One word is enough.)\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Elbow",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B21",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: Healthcare analytics should explicitly consider privacy, fairness, and transparency alongside predictive accuracy.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B22",
+    "type": "self_check",
+    "scored": false,
+    "section": "B",
+    "question": "Complete: A Linear Regression model that fits very closely to training data noise but performs poorly on test data suffers from _______.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "overfitting",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B23",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "Match specificity to the definition (positive = disease present):",
+    "options": [
+      "(A) TP / (TP + FN)",
+      "(B) TN / (TN + FP)",
+      "(C) TP / (TP + FP)",
+      "(D) 2PR / (P + R)"
+    ],
+    "correct_answer": "(B) TN / (TN + FP)",
+    "explanation": "Specificity",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B24",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: Multicollinearity means predictors are strongly linearly related, which can make regression coefficients unstable.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B25",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: On imbalanced data, accuracy is always the best metric to optimise for deployment decisions.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "FALSE",
+    "explanation": "FALSE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B26",
+    "type": "self_check",
+    "scored": false,
+    "section": "B",
+    "question": "Complete: After `StandardScaler.fit_transform(X_train)` (default), each feature on the training portion typically has mean ≈ ___ and variance ≈ ___.",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "0 and 1 (approximately, after StandardScaler)",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B27",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: The training dataset is used to evaluate the final model's real-world performance.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "FALSE",
+    "explanation": "FALSE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B28",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: The elbow method plots a cluster-quality curve against K to help choose a reasonable number of clusters.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B29",
+    "type": "self_check",
+    "scored": false,
+    "section": "B",
+    "question": "Complete: In K-Means clustering, the _______ is the central point of each cluster, recalculated at each iteration.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "centroid",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B30",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: Denormalisation (flattening joined tables) is often needed so each training row represents one complete analytic observation.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B31",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "Match Standard Deviation to the correct description:",
+    "options": [
+      "(A) Proportion of actual positives correctly identified",
+      "(B) Measure of how spread out values are from the mean",
+      "(C) Proportion of predicted positives that are actually positive",
+      "(D) Evaluates how well-separated and compact clusters are",
+      "(E) Used by Decision Trees to measure how mixed a node is"
+    ],
+    "correct_answer": "(B) Measure of how spread out values are from the mean",
+    "explanation": "B",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B32",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: Ordinal categories (e.g. pain scale Low/Medium/High) can sometimes be encoded with ordered integers if the order is meaningful.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B33",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "Match Recall to the correct description:",
+    "options": [
+      "(A) Proportion of actual positives correctly identified",
+      "(B) Measure of how spread out values are from the mean",
+      "(C) Proportion of predicted positives that are actually positive",
+      "(D) Evaluates how well-separated and compact clusters are",
+      "(E) Used by Decision Trees to measure how mixed a node is"
+    ],
+    "correct_answer": "(A) Proportion of actual positives correctly identified",
+    "explanation": "A",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B34",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: Precision answers: “Of all predicted positives, how many were truly positive?”\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B35",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "Match Precision to the formula:",
+    "options": [
+      "(A) TP / (TP + FP)",
+      "(B) TP / (TP + FN)",
+      "(C) TN / (TN + FP)",
+      "(D) 2PR / (P + R)"
+    ],
+    "correct_answer": "(A) TP / (TP + FP)",
+    "explanation": "A — Precision = TP/(TP+FP)",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B36",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: Data leakage can never make hold-out metrics look better than they should — leakage only adds random noise.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "FALSE",
+    "explanation": "FALSE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B37",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "Match Overfitting to the correct description:",
+    "options": [
+      "(A) The model is too simple and doesn't capture patterns in the training data",
+      "(B) Uses majority vote of many trees to make predictions",
+      "(C) The model memorises training data but fails on new data",
+      "(D) Measures how well-separated clusters are (range -1 to +1)"
+    ],
+    "correct_answer": "(C) The model memorises training data but fails on new data",
+    "explanation": "C",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B38",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: When using K-Means clustering, you must specify the number of clusters (K) before training the model.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B39",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: The p-value in a linear regression ANOVA result tells you whether a feature is statistically significant in predicting the target variable.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B40",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: A Decision Tree that is allowed to grow without any depth limit will always overfit to the training data.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B41",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: Grid search on a Cartesian product of grids evaluates only a random subset of combinations by definition.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "FALSE",
+    "explanation": "FALSE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B42",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: In k-fold cross-validation, each data point is used exactly once as part of the validation fold across the k runs (for that CV scheme).\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B43",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: Pipelines in sklearn help chain preprocessing and models so the same CV folds see consistent preprocessing.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B44",
+    "type": "self_check",
+    "scored": false,
+    "section": "B",
+    "question": "Complete: Train accuracy much higher than test accuracy is a classic sign of ________.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "overfitting",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B45",
+    "type": "self_check",
+    "scored": false,
+    "section": "B",
+    "question": "Complete: In a confusion matrix, a False Negative occurs when a model predicts _______ but the actual outcome is _______.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "negative (will attend) / positive (missed)",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B46",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: Random search explores every combination on a fixed grid of hyperparameters.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "FALSE",
+    "explanation": "FALSE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B47",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "Match Precision to the correct description:",
+    "options": [
+      "(A) Proportion of actual positives correctly identified",
+      "(B) Measure of how spread out values are from the mean",
+      "(C) Proportion of predicted positives that are actually positive",
+      "(D) Evaluates how well-separated and compact clusters are",
+      "(E) Used by Decision Trees to measure how mixed a node is"
+    ],
+    "correct_answer": "(C) Proportion of predicted positives that are actually positive",
+    "explanation": "C",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B48",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "TRUE or FALSE: In stratified k-fold, each fold aims to preserve approximately the same class proportions as the full dataset.\n\n---",
+    "options": [
+      "TRUE",
+      "FALSE"
+    ],
+    "correct_answer": "TRUE",
+    "explanation": "TRUE",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B49",
+    "type": "mcq",
+    "scored": true,
+    "section": "B",
+    "question": "Match Silhouette Score to the correct description:",
+    "options": [
+      "(A) Proportion of actual positives correctly identified",
+      "(B) Measure of how spread out values are from the mean",
+      "(C) Proportion of predicted positives that are actually positive",
+      "(D) Evaluates how well-separated and compact clusters are",
+      "(E) Used by Decision Trees to measure how mixed a node is"
+    ],
+    "correct_answer": "(D) Evaluates how well-separated and compact clusters are",
+    "explanation": "D",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "B50",
+    "type": "self_check",
+    "scored": false,
+    "section": "B",
+    "question": "Complete: For ML on relational data, analysts often build one ________ / flat analytic table with one row per entity.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "denormalisation / flat (analytic)",
+    "difficulty": "medium",
+    "topic": "Section B — Objective"
+  },
+  {
+    "id": "C1",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Deep unpruned tree memorises; logistic can generalise better on small tabular data when linear-ish.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Deep unpruned tree memorises; logistic can generalise better on small tabular data when linear-ish. Expand in your answer: define terms, give one example, and (where relevant) name a business or clinical consequence.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C2",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Grid: exhaustive over grid; random search samples hyperparameter space.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Grid: exhaustive over grid; random search samples hyperparameter space.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C3",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Define data leakage in supervised learning and give one concrete example of how it can inflate reported accuracy.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Leakage = using information that would not be available at prediction time (or from the test partition) when training or selecting the model. Example: fitting a scaler or imputer on the full dataset including test rows, or using future outcomes as features.",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C4",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Unsupervised; numeric/scaled inputs; labels + centroids; spherical/compact cluster assumption.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Unsupervised; numeric/scaled inputs; labels + centroids; spherical/compact cluster assumption. Expand in your answer: define terms, give one example, and (where relevant) name a business or clinical consequence.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C5",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Nonlinear boundaries, interactions — tree/forest often strong on tabular classification.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Nonlinear boundaries, interactions — tree/forest often strong on tabular classification. Expand in your answer: define terms, give one example, and (where relevant) name a business or clinical consequence.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C6",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Three advantages of analytics/mining with concrete care examples; two risks (privacy, bias, governance).\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Three advantages of analytics/mining with concrete care examples; two risks (privacy, bias, governance). Expand in your answer: define terms, give one example, and (where relevant) name a business or clinical consequence.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C7",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "(a) HealthTrack's Data Science Manager wants to understand the characteristics of the K-Means clustering algorithm before approving its use. Write a structured explanation covering:\n- What type of learning it uses (supervised/unsupervised)\n- What type of data it requires\n- What it produces as output\n- One key assumption it makes about cluster shapes\n\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\n(b) Evaluate K-Means by discussing two specific strengths and two specific weaknesses when applied to HealthTrack's clinic segmentation task. For each weakness, suggest one alternative approach.\n\n| | Detail | Alternative (for weakness) |\n|-|--------|---------------------------|\n| Strength 1 | | N/A |\n| Strength 2 | | N/A |\n| Weakness 1 | | |\n| Weakness 2 | | |\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Model answer: (a) Unsupervised; numeric / scaled features; pre-specify K; outputs labels + centroids; assumes compact / roughly spherical clusters. (b) Two strengths (speed, interpretable profiles) and two weaknesses (K required, shape limits) with DBSCAN / hierarchical (or similar) as alternatives per weakness.",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C8",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Drop when column mostly missing / non-informative / imputation would be fiction.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Drop when column mostly missing / non-informative / imputation would be fiction. Expand in your answer: define terms, give one example, and (where relevant) name a business or clinical consequence.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C9",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Class weights, undersample majority, threshold tuning, etc.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Class weights, undersample majority, threshold tuning, etc.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C10",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "The RetailEdge database has customer data stored in four separate tables: *Customers*, *Transactions*, *Products*, and *StoreLocations*. A junior analyst wants to train a machine learning model directly on these separate tables.\n\nExplain why this is not possible and what the analyst must do instead. Use the term \"denormalisation\" in your answer.\n\n*[Answer space: 8–10 lines]*\n\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Model answer: Each training row must contain all features for one complete customer spread across tables. Join with SQL/`pd.merge` into a denormalised flat table; mention entity integrity and that fragment tables break the observation definition.",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C11",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Local overfitting; CV across sites, regularisation, more diverse data, simpler models.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Local overfitting; CV across sites, regularisation, more diverse data, simpler models. Expand in your answer: define terms, give one example, and (where relevant) name a business or clinical consequence.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C12",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Privacy, bias, regulatory burden — any two valid risks.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Privacy, bias, regulatory burden — any two valid risks.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C13",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Plot inertia vs K; elbow is subjective heuristic.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Plot inertia vs K; elbow is subjective heuristic.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C14",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Drift: performance drops as data distribution shifts.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Drift: performance drops as data distribution shifts.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C15",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): fit learns parameters; transform applies; fit_transform on training data.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*fit learns parameters; transform applies; fit_transform on training data.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C16",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Pipelines chain preprocessing + estimator; consistent CV; easier deployment.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Pipelines chain preprocessing + estimator; consistent CV; easier deployment.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C17",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): 78% of cost variability explained by the model; remainder other factors / noise — not '78% of predictions exact'.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*78% of cost variability explained by the model; remainder other factors / noise — not '78% of predictions exact'. Expand in your answer: define terms, give one example, and (where relevant) name a business or clinical consequence.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C18",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Three problems: missing, raw categories, mixed scales — paired preprocessing steps.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Three problems: missing, raw categories, mixed scales — paired preprocessing steps. Expand in your answer: define terms, give one example, and (where relevant) name a business or clinical consequence.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C19",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): k folds; rotate validation; average scores.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*k folds; rotate validation; average scores.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C20",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "(a) HealthTrack has trained a no-show prediction model using all available data for both training and evaluation. Explain why this is wrong, and describe the correct approach using training, validation, and test sets.\n\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\n(b) After deploying the no-show model in one clinic, it performs excellently. But when rolled out to other clinics, predictions are poor. Explain how this is related to overfitting and suggest two techniques that could have been used to prevent it.\n\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Model answer: (a) Training on all data for evaluation inflates metrics — the model has “seen” the test cases. Use train (fit), validation (tune), test (single honest estimate). (b) Good performance on one clinic but poor elsewhere → overfitting to local noise. Mitigations: k-fold / GroupKFold across clinics; regularisation; more diverse data; simpler models.",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C21",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Multicollinearity: correlated predictors; unstable coefficients / high VIF.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Multicollinearity: correlated predictors; unstable coefficients / high VIF.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C22",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Leakage: future or test information in training features; example: target encoding fit on full data.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Leakage: future or test information in training features; example: target encoding fit on full data. Expand in your answer: define terms, give one example, and (where relevant) name a business or clinical consequence.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C23",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "The HealthTrack CEO has asked the Analytics team to justify the investment in data mining technology.\n\n(a) Describe three specific advantages of data mining for HealthTrack. For each advantage, provide a concrete example relevant to the healthcare context.\n\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\n(b) Describe two disadvantages or risks of data mining for an organisation like HealthTrack that handles sensitive patient data.\n\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Model answer: Three HealthTrack-specific advantages (e.g. no-show risk triage with reminders; resource optimisation across clinics; treatment cost forecasting for budgets). Two risks: GDPR / patient privacy and algorithmic bias perpetuating inequity.",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C24",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "RetailEdge's churn prediction model produced the following confusion matrix:\n\n| | Predicted Churn | Predicted Stayed |\n|--|--|--|\n| Actual Churn | 120 | 30 |\n| Actual Stayed | 40 | 310 |\n\n(a) Identify the values of: True Positives (TP), False Positives (FP), False Negatives (FN), True Negatives (TN).\n\n(b) Calculate Precision and Recall. Show your working.\n\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "TP=120, FP=40, FN=30, TN=310. Precision = 120/(120+40) = 120/160 = 0.75 = 75%; Recall = 120/(120+30) = 120/150 = 0.80 = 80%; F1 = 2×(0.75×0.80)/(0.75+0.80) = 2×0.60/1.55 ≈ 0.774 ≈ 77.4%.",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C25",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Distances distorted if feature scales differ — scale before K-Means.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Distances distorted if feature scales differ — scale before K-Means.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C26",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Describe two advantages and one disadvantage of using data mining in a retail business like RetailEdge. Give a specific real-world example for each advantage.\n\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Model answer: Example advantages: segmentation for targeted promotions; churn prevention with intervention offers. Disadvantage: GDPR/privacy and breach risk. Each advantage needs a retail-specific example.",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C27",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Regression / classification / clustering for the three row types.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Regression / classification / clustering for the three row types.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C28",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): MAE same units, robust; RMSE penalises large errors more.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*MAE same units, robust; RMSE penalises large errors more.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C29",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "(a) HealthTrack's data exists in several forms. For each data type below, identify the most suitable machine learning model type and give one sentence justifying your choice.\n\n| Data Type | HealthTrack Example | Suitable Model Type | Justification |\n|-----------|--------------------|--------------------|---------------|\n| Continuous numerical data | Patient treatment cost | | |\n| Categorical data with labels | Did patient miss appointment? (Yes/No) | | |\n| Unlabelled multi-dimensional data | Clinic performance metrics | | |\n\n(b) A new analyst at HealthTrack has loaded raw appointment data directly from the operational database without any preprocessing and fed it straight into a model. List three specific problems this approach will cause and name the preprocessing step that addresses each.\n\n| Problem | Preprocessing Step |\n|---------|-------------------|\n| | |\n| | |\n| | |\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Model answer: (a) Continuous treatment cost → regression (e.g. linear regression). Labelled missed appointment → classification (logistic / tree / forest). Unlabelled clinic metrics → clustering (K-Means or alternatives). (b) Three paired rows: e.g. missing values → impute/drop; categorical text → encode; mixed scales → scale.",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C30",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Explain IQR-based outlier detection in two sentences (mention quartiles, fences, and what counts as an outlier).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Compute Q1, Q3, and IQR = Q3 − Q1; fences Q1 − 1.5×IQR and Q3 + 1.5×IQR; points outside the fences are flagged as outliers.",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C31",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Compare grid search and random search for hyperparameter tuning — one sentence each on when each is useful.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Grid search tries every combination on a small fixed grid — thorough but expensive when many hyperparameters. Random search samples the space — often finds good regions faster when only a few parameters really matter.",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C32",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Interaction / derived feature e.g. visits per week for no-show risk.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Interaction / derived feature e.g. visits per week for no-show risk.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C33",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Rare positives: always-negative model looks accurate — accuracy misleading.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Rare positives: always-negative model looks accurate — accuracy misleading.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C34",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): K-Means: need K, shape limits; hierarchical: dendrogram, slower.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*K-Means: need K, shape limits; hierarchical: dendrogram, slower.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C35",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Two pros (fast, interpretable profiles); two cons (K choice, shape); alternatives hierarchical/DBSCAN.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Two pros (fast, interpretable profiles); two cons (K choice, shape); alternatives hierarchical/DBSCAN. Expand in your answer: define terms, give one example, and (where relevant) name a business or clinical consequence.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C36",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Dummy trap: perfect collinearity from all dummies + intercept.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Dummy trap: perfect collinearity from all dummies + intercept.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C37",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Mean pulled by outliers; median more robust on skewed data.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Mean pulled by outliers; median more robust on skewed data.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C38",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Why use `stratify=y` in `train_test_split` when the classification target is imbalanced?\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Stratify=y keeps the same class proportion in train and test when the target is rare or skewed, avoiding splits where one fold has almost no positives.",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C39",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Linear models need numeric design matrix; categories must be encoded.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Linear models need numeric design matrix; categories must be encoded.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C40",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "In two sentences, compare MAE and RMSE as error metrics for a regression model used in business forecasting.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "MAE averages absolute errors in the same units as the target and treats all errors linearly. RMSE squares errors first, so large mistakes count more — useful when big errors are especially costly.",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C41",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Two benefits + short examples (efficiency, safety, personalisation).\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Two benefits + short examples (efficiency, safety, personalisation).*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C42",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Precision and recall definitions with positive = disease present.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Precision and recall definitions with positive = disease present.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C43",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Single number summarising ROC / ranking of positives vs negatives.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Single number summarising ROC / ranking of positives vs negatives.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C44",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Training error on train data; generalisation error on unseen data.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Training error on train data; generalisation error on unseen data.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C45",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Nominal: no order (ward); ordinal: order (pain scale).\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Nominal: no order (ward); ordinal: order (pain scale).*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C46",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Validation for tuning; test set stays pristine for final estimate.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Validation for tuning; test set stays pristine for final estimate.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C47",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Winsorise keeps N; dropping may remove real but extreme cases.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Winsorise keeps N; dropping may remove real but extreme cases.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C48",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Logistic: interpretable coefficients, fast baseline when linear boundary OK.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Logistic: interpretable coefficients, fast baseline when linear boundary OK.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C49",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Fairness, consent, surveillance — two ethical risks.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Fairness, consent, surveillance — two ethical risks.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "C50",
+    "type": "self_check",
+    "scored": false,
+    "section": "C",
+    "question": "Write a short answer (about 3–5 sentences unless a shorter response clearly suffices).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Marking guide (core): Stop when validation worsens; limits overfitting.\n\nModel answer (expanded): In your written answer, name definitions, give one example, and (where relevant) a business or clinical consequence.\n\n*Stop when validation worsens; limits overfitting.*",
+    "difficulty": "hard",
+    "topic": "Section C — Short answer"
+  },
+  {
+    "id": "D1",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Contrast MAE vs RMSE for executive reporting on forecast error.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "MAE same units, treats errors linearly; RMSE penalises large errors more — executives often want both.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D2",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Three one-sentence answers: (i) why scale before K-Means, (ii) does K-Means choose K automatically, (iii) what the elbow plots.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "(i) Scaling puts features on comparable scales so distance isn’t dominated by one unit. \n(ii) K-Means is not a model-selection algorithm — you must supply K. \n(iii) Elbow plots inertia vs K to spot where marginal gains flatten (heuristic, not guaranteed “true” K).",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D3",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Dataset: `retailedge_customers.csv` — `customer_id, age, annual_income, purchase_frequency, loyalty_score, region, customer_tier, annual_spend, churned`\n\nFill in the Blanks\n\n(i) Fill in the four blanks in the K-Means clustering code below.\n\n```python\nfrom sklearn.cluster import KMeans\nfrom sklearn.preprocessing import StandardScaler\nimport matplotlib.pyplot as plt\n\nX = df[['annual_income', 'purchase_frequency']]\n\n# Step 1: Scale (K-Means uses distance — unscaled features distort cluster shapes)\nscaler = StandardScaler\nX_scaled = scaler._____________(X) # ← Blank 1: scale AND fit in one step\n\n# Step 2: Elbow Method\ninertia = []\nfor k in range(1, 11):\n km = KMeans(n_clusters=k, random_state=42, n_init=10)\n km.fit(X_scaled)\n inertia.append(km.________) # ← Blank 2: attribute storing sum of squared distances\n\nplt.plot(range(1, 11), inertia, marker='o')\nplt.xlabel('Number of Clusters (K)')\nplt.ylabel('Inertia')\nplt.title('Elbow Method — RetailEdge')\nplt.show\n\n# Step 3: Train with K=4 (from elbow plot)\nfinal_km = KMeans(n_clusters=___, random_state=42, n_init=10) # ← Blank 3\ndf['cluster'] = final_km._____________(X_scaled) # ← Blank 4: fit AND return labels\n```\n\n(ii) The clustering produced these segment profiles:\n\n| Cluster | Mean Annual Income | Mean Purchase Frequency |\n|---------|--------------------|------------------------|\n| 0 | £73,000 | 55/yr |\n| 1 | £27,000 | 6/yr |\n| 2 | £46,000 | 52/yr |\n| 3 | £79,000 | 8/yr |\n\nGive a meaningful business name for each cluster. Then suggest one targeted marketing action for the highest-value cluster.\n\n| Cluster | Business Name |\n|---------|--------------|\n| 0 | |\n| 1 | |\n| 2 | |\n| 3 | |\n\n*Marketing action for the highest-value cluster:*\n_______________________________________________\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "(i) Blanks: `fit_transform` · `inertia_` · `4` · `fit_predict`\n\n(ii) Name clusters using both income and frequency (e.g. cluster 3 = affluent, low frequency → VIP re-engagement). One targeted action for your chosen highest-value segment.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D4",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Dataset: tabular classification with `DecisionTreeClassifier` defaults.\n\nThe tree still overfits badly. Name one real hyperparameter (e.g. depth, leaf size, pruning) you would tighten and why.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Issue: No capacity constraint — a deep tree still overfits.\n\nFix: Add e.g. `max_depth=5`, or `min_samples_leaf`, `min_samples_split`, `ccp_alpha`, etc.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D5",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Name two hyperparameters that reduce tree overfitting.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "e.g. `max_depth`, `min_samples_leaf`, `min_samples_split`, pruning / cost-complexity — any two valid tree constraints.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D6",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Fill blanks: `test_size=____`, fit on `____`, `____`, evaluate on `____`, compare predictions `____` to `____`.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Blanks: `0.2` · `X_train`, `y_train` · `X_test` · `y_test` · `y_pred`",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D7",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Fix argument order for `recall_score`, `f1_score`, and `confusion_matrix` (sklearn convention).\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Line A/B/C: pass `y_test` first, then `y_pred`, for `recall_score`, `f1_score`, and `confusion_matrix`.\n\nRule: `(y_true, y_pred)` everywhere in sklearn classification metrics.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D8",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Explain `stratify=y` when splitting imbalanced classification data.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "`stratify=y` preserves class proportions when splitting.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D9",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Name three clinic segments from centroid profiles and one operational action for the worst-performing segment.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Example names: Segment 0 → “Long-wait, low-satisfaction, high-volume” clinics; Segment 1 → “Efficient, high-satisfaction”; Segment 2 → “Balanced mid-performers”. Action for worst segment: targeted staffing review + triage process redesign + patient communication pilot.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D10",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "With 6% churn, explain why accuracy can mislead and name two metrics or approaches that better reflect minority-class performance.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Answer: With 6% churn, a trivial always-negative model can look accurate by predicting “no churn” most of the time — accuracy hides minority-class failure. Prefer recall, precision, F1, PR-AUC, or balanced accuracy, chosen to match business cost of false negatives vs false positives.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D11",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Confusion matrix (positive = “disease present”): TP=85, FP=15, FN=35, TN=365.\n\nCompute precision, recall, and accuracy. Show working.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "TP=85, FP=15, FN=35, TN=365.\n\nPrecision = TP/(TP+FP) = 85/100 = 0.85 \nRecall = TP/(TP+FN) = 85/120 ≈ 0.708 \nAccuracy = (85+365)/500 = 0.90\n\nShow arithmetic in an exam-style table for full marks.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D12",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Dataset: healthtrack_patients.csv — patient_id, age, income_band, distance_km, appointment_cost, days_since_last_visit, num_previous_appointments, diagnosis_category, no_show | healthtrack_clinics.csv — clinic_id, avg_wait_time_mins, patient_satisfaction_score, appointments_per_day, no_show_rate\n\nFill in the Blanks\n\nFill in every blank (marked `______`) so the code runs correctly.\n\n```python\n# (i) One-hot encode diagnosis_category (nominal: General, Specialist, Emergency, Routine)\ndf = pd.get_dummies(df, columns=[_______________], drop_first=True)\n\n# Complete this sentence explaining why one-hot encoding is used here:\n# \"One-hot encoding is used because the diagnosis categories have no natural\n# ______________ relationship — treating them as numbers would falsely imply\n# one category is mathematically greater than another.\"\n\n# (ii) Ordinal encode income_band (Low < Medium < High)\nincome_order = {'Low': ______, 'Medium': ______, 'High': ______}\ndf['income_band_enc'] = df['income_band'].______(income_order)\n\n# (iii) Create a feature capturing the cost relative to travel distance\ndf['cost_per_km'] = df[_______________] / (df['distance_km'] + 1)\n```\n\n*(7 blanks total — marks awarded for correct blanks)*\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Blanks: `'diagnosis_category'` · missing word ordinal / natural order · `1, 2, 3` · `.map` · `'appointment_cost'` for `cost_per_km`.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D13",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Add scaling before a loop that fits K-Means on mixed-scale numeric columns; explain one sentence why.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Add scaling before the loop, e.g.\n```python\nfrom sklearn.preprocessing import StandardScaler\nXs = StandardScaler().fit_transform(X)\n```\nthen `km.fit(Xs)`.\n\nWhy: Without scaling, variables with larger numeric ranges dominate distance.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D14",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Explain why accuracy is misleading under strong class imbalance; name better metrics.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Majority class dominates accuracy; stress recall/F1/PR-AUC for rare positives.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D15",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Fix `precision_score(y_pred, y_test)` argument order.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "`precision_score(y_test, y_pred)`.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D16",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Dataset: `retailedge_customers.csv` — `customer_id, age, annual_income, purchase_frequency, loyalty_score, region, customer_tier, annual_spend, churned`\n\nSpot the Bugs + Model Recommendation\n\n(i) A junior analyst wrote the following code to evaluate two churn models. It contains two bugs. Identify both bugs and write the corrected lines.\n\n```python\nfrom sklearn.metrics import accuracy_score, precision_score, recall_score\n\nlr_pred = lr.predict(X_test)\ndt_pred = dt.predict(X_test)\n\nprint(\"=== Logistic Regression ===\")\nprint(f\"Accuracy : {accuracy_score(y_test, lr_pred):.2f}\")\nprint(f\"Precision : {precision_score(lr_pred, y_test):.2f}\") # ← Line A\nprint(f\"Recall : {recall_score(y_test, lr_pred):.2f}\")\n\nprint(\"=== Decision Tree ===\")\nprint(f\"Accuracy : {accuracy_score(dt_pred, y_test):.2f}\") # ← Line B\nprint(f\"Precision : {precision_score(y_test, dt_pred):.2f}\")\nprint(f\"Recall : {recall_score(y_test, dt_pred):.2f}\")\n```\n\n*Bug on Line A — corrected:*\n_______________________________________________\n\n*Bug on Line B — corrected:*\n_______________________________________________\n\n*Why does this matter? (one sentence):*\n_______________________________________________\n\n(ii) After fixing the bugs, the corrected code produced these results:\n\n```\n=== Logistic Regression === Train Accuracy: 84%\nAccuracy : 0.83\nPrecision : 0.81\nRecall : 0.79\n\n=== Decision Tree === Train Accuracy: 99%\nAccuracy : 0.71\nPrecision : 0.68\nRecall : 0.74\n```\n\nWhich model would you recommend to RetailEdge management and why? Your answer must:\n- Name the problem affecting the Decision Tree and explain its cause\n- Reference at least two metrics to justify your recommendation\n- Suggest one change to the `DecisionTreeClassifier(...)` constructor to address the problem\n\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "(i) Line A: `precision_score(y_test, lr_pred)` · Line B: `accuracy_score(y_test, dt_pred)` — sklearn uses `(y_true, y_pred)`.\n\n(ii) Recommend Logistic Regression: smaller train–test gap; higher precision on churners → fewer wasted contacts. Tree shows overfitting (99% train vs ~71% test). Fix tree with e.g. `max_depth=5` (or `min_samples_leaf`, etc.).",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D17",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Bug: `df = df[df['patient_age'] == -1]` intended to remove invalid ages. Give the correct filter.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Keep valid rows: `df = df[df['patient_age'] > 0]` — previous line kept only invalid ages.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D18",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Bug: `fillna(df['monthly_revenue'].mean)` on heavily skewed revenue. Give a better imputation and one-line fix.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Median imputation: `fillna(df['monthly_revenue'].median())` — robust to outliers on skewed revenue.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D19",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Spot the bug: `model.fit(X_test, y_test)` — corrected line + leakage explanation.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "`model.fit(X_train, y_train)` — never fit on test.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D20",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Dataset: `retailedge_customers.csv` — `customer_id, age, annual_income, purchase_frequency, loyalty_score, region, customer_tier, annual_spend, churned`\n\nFill in the Blanks + Justification\n\n(i) Fill in the five blanks in the IQR outlier detection code below.\n\n```python\nQ1 = df['annual_income'].quantile(______)\nQ3 = df['annual_income'].quantile(______)\nIQR = ______ - ______\n\nlower_fence = Q1 - 1.5 * IQR\nupper_fence = ______ + 1.5 * IQR\n\noutliers = df[(df['annual_income'] < lower_fence) | (df['annual_income'] > upper_fence)]\nprint(f\"Outliers found: {len(outliers)}\")\n```\n\n(ii) The outliers turn out to be genuinely high-income customers — not data entry errors. Should RetailEdge remove or cap (winsorise) these values? Write one sentence justifying your decision in the context of the RetailEdge business.\n\n_______________________________________________\n_______________________________________________\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "(i) `0.25` · `0.75` · `IQR = Q3 - Q1` · upper fence uses `Q3`.\n\n(ii) Prefer cap / winsorise at the fence if outliers are genuine high-value customers — keeps all rows and business signal; drop only if argued as bad data.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D21",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Given printed train/test metrics for logistic vs deep tree, recommend one model, name overfitting, and suggest one tree constraint.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "(i) Recommend logistic regression: higher test accuracy and precision, much smaller train–test gap → better generalisation. Cite at least two printed metrics.\n\n(ii) Overfitting on the tree (very high train vs much lower test). Constrain e.g. `DecisionTreeClassifier(max_depth=5, min_samples_leaf=20, random_state=42)`.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D22",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Fill blanks: `_______` then `_______` for scaler + inertia in elbow loop.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "fit_transform · inertia_.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D23",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Dataset: `retailedge_customers.csv` — `customer_id, age, annual_income, purchase_frequency, loyalty_score, region, customer_tier, annual_spend, churned`\n\nFill in the Blanks\n\nThe code below encodes two columns. Fill in every blank (marked `______`) so the code runs correctly.\n\n```python\n# Encode region (nominal — North, South, East, West; no natural order):\nregion_dummies = pd.get_dummies(df['region'], drop_first=______)\ndf = pd.concat([df, region_dummies], axis=______)\n\n# Encode customer_tier (ordinal — Bronze < Silver < Gold < Platinum):\ntier_order = {'bronze': ______, 'silver': ______, 'gold': ______, 'platinum': ______}\ndf['tier_encoded'] = df['customer_tier'].______(tier_order)\n```\n\n*(6 blanks total — 0.5 marks each)*\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Blanks: `True` · `1` · ordinal integers `1,2,3,4` for tiers · `.map`\n\n```python\nregion_dummies = pd.get_dummies(df['region'], drop_first=True)\ndf = pd.concat([df, region_dummies], axis=1)\ntier_order = {'bronze': 1, 'silver': 2, 'gold': 3, 'platinum': 4}\ndf['tier_encoded'] = df['customer_tier'].map(tier_order)\n```",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D24",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Dataset: healthtrack_patients.csv — patient_id, age, income_band, distance_km, appointment_cost, days_since_last_visit, num_previous_appointments, diagnosis_category, no_show | healthtrack_clinics.csv — clinic_id, avg_wait_time_mins, patient_satisfaction_score, appointments_per_day, no_show_rate\n\nSpot the Bugs\n\nA data analyst wrote the following code to load and clean the HealthTrack patient dataset. The code contains two bugs. For each bug: circle or underline the incorrect part, then write the corrected line in the space below.\n\n```python\nimport pandas as pd\nimport numpy as np\n\ndf = pd.read_csv('healthtrack_patients.csv')\n\n# Step 1: Check dataset shape and preview\nprint(df.shape)\nprint(df.head)\n\n# Step 2: Count missing values per column\nprint(df.isnull.count) # ← Line A\n\n# Step 3: Fill missing values\ndf['income_band'] = df['income_band'].fillna(df['income_band'].median) # ← Line B\ndf['appointment_cost'] = df['appointment_cost'].fillna(df['appointment_cost'].median)\n\n# Step 4: Show class balance of the target column\nprint(df['no_show'].value_counts)\n```\n\n*Bug on Line A — corrected:*\n_______________________________________________\n\n*Why is this wrong? (one sentence):*\n_______________________________________________\n\n*Bug on Line B — corrected:*\n_______________________________________________\n\n*Why is this wrong? (one sentence):*\n_______________________________________________\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Line A: `print(df.isnull().sum())` — `.count` counted non-nulls, not missing values.\n\nLine B: `fillna(df['income_band'].mode[0])` — median is invalid on categorical text; use mode.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D25",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Fix: clustering on raw features after scaling — show correct `fit_predict` usage on scaled matrix.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Use `fit_predict(Xs)` not raw `features_df` after scaling.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D26",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Fill sklearn blanks: `max_depth` ≈ __, predict on `X___`, `n_estimators` __, `fit(____, ____)` for a random forest.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Typical: `max_depth` e.g. 5; `predict` on `X_test`; `n_estimators` 100; `fit` `X_train`.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D27",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Fill blanks: `random_state=____`, `stratify=____`, `classification_report(____, ____)` signature.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Blanks: `42` · `y` · `y_test`, `y_pred` (order for `classification_report`)",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D28",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Why can Euclidean K-Means be distorted if features use different units/scales?\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Different units → different scales → Euclidean distance dominated by large-scale variables without scaling.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D29",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Dataset: `retailedge_customers.csv` — `customer_id, age, annual_income, purchase_frequency, loyalty_score, region, customer_tier, annual_spend, churned`\n\nHand Calculation + Plain English\n\nThe RetailEdge Linear Regression model produced the following results on 5 test customers:\n\n| Customer | Actual Annual Spend | Predicted Annual Spend |\n|----------|--------------------|-----------------------|\n| C1 | £5,200 | £4,900 |\n| C2 | £3,100 | £3,400 |\n| C3 | £7,800 | £7,500 |\n| C4 | £2,400 | £2,700 |\n| C5 | £6,600 | £6,200 |\n\n(i) Calculate the RMSE (Root Mean Square Error). Show all working steps.\n\n```\nStep 1 — Errors (Actual − Predicted):\n\n\nStep 2 — Squared errors:\n\n\nStep 3 — Mean of squared errors (MSE):\n\n\nStep 4 — RMSE = √MSE:\n\n```\n\n(ii) The model's R² score is 0.81. Write one sentence explaining what this means to the RetailEdge Finance Manager — no technical jargon allowed.\n\n_______________________________________________\n_______________________________________________\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "(i) Errors: 300, −300, 300, −300, 400 → squared sum 520,000 → MSE 104,000 → RMSE √104,000 ≈ £322 (accept ±£5).\n\n(ii) Plain English: the model accounts for about 81% of why spend differs between customers; ~19% is other factors — not “81% of predictions exact.”",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D30",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Write a JOIN condition linking `customers` to `orders` on a shared key.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "`c.customer_id = o.customer_id` (or equivalent PK/FK join keys).",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D31",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Residuals (actual − predicted cost): −200, +200, +300, −200, −200. Compute MSE and RMSE.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Using the table (Actual − Predicted): P1 −200, P2 +200, P3 +300, P4 −200, P5 −200. \nSquared: 40,000 + 40,000 + 90,000 + 40,000 + 40,000 = 250,000. \nMSE = 250,000 / 5 = 50,000. RMSE = √50,000 ≈ 223.6 (same units as cost).",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D32",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Explain when to use `transform` vs `fit_transform` for `StandardScaler` in a train/validation workflow.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Corrected: `X_scaled = scaler.fit_transform(X_clinic)`\n\nDifference: `fit_transform` learns parameters on this data then transforms; `transform` only applies already learned parameters (would raise `NotFittedError` if no prior `fit`).",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D33",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Fill: `pd.merge(..., on='_____', how='_____')` for keeping all left customers.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "`'customer_id'` · `'left'`.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D34",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Errors +10, −10, +20: compute MSE and RMSE.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Errors 10,−10,20 → squares 100,100,400 → MSE=200 → RMSE≈14.14.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D35",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "When must you use `GroupKFold` (or similar) instead of ordinary K-fold?\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "When the same clinic must not appear in both train and validation (avoid group leakage), use GroupKFold on `clinic_id`.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D36",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Fill blanks for an elbow + final cluster assignment on scaled data: `_______`, `inertia_`, `_______`.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Blanks: `fit_transform` · `inertia_` · `fit_predict`",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D37",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Dataset: healthtrack_patients.csv — patient_id, age, income_band, distance_km, appointment_cost, days_since_last_visit, num_previous_appointments, diagnosis_category, no_show | healthtrack_clinics.csv — clinic_id, avg_wait_time_mins, patient_satisfaction_score, appointments_per_day, no_show_rate\n\nFill in the Blanks\n\nFill in every blank in the code below. The model is already structured for you — only the key values and method calls are missing.\n\n```python\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import classification_report, confusion_matrix\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nfeature_cols = ['age', 'num_previous_appointments', 'distance_km',\n 'days_since_last_visit', 'appointment_cost']\nX = df[feature_cols]\ny = df['no_show']\n\n# (i) Split — 80% train, 20% test, random_state=42\nX_train, X_test, y_train, y_test = train_test_split(\n X, y, test_size=______, random_state=42)\n\n# (ii) Decision Tree — depth limited to prevent overfitting\ndt = DecisionTreeClassifier(max_depth=______, random_state=42)\ndt.fit(X_train, ______)\ndt_pred = dt.predict(X_test)\nprint(classification_report(y_test, dt_pred))\n\n# (iii) Random Forest\nrf = RandomForestClassifier(n_estimators=100, random_state=42)\nrf.fit(______, y_train)\nrf_pred = rf.predict(______)\nprint(classification_report(y_test, rf_pred))\n\n# (iv) Confusion matrix heatmap for Random Forest (already complete — no blanks)\ncm = confusion_matrix(y_test, rf_pred)\nsns.heatmap(cm, annot=True, fmt='d', cmap='Blues',\n xticklabels=['Attended', 'Missed'],\n yticklabels=['Attended', 'Missed'])\nplt.title('Random Forest — Confusion Matrix')\nplt.show\n```\n\n*(6 blanks total — marks awarded for correct blanks)*\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Blanks: `0.2` · `max_depth=5` (or similar) · `y_train` · `X_train` · `X_test` for `rf.predict`.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D38",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Dataset: generic supervised learning tabular pipeline.\n\nSpot the bug: a colleague trains with:\n\n```python\nmodel.fit(X_test, y_test)\n```\n\nGive the corrected line and one sentence on why this is serious.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Bug: Fitting on `X_test, y_test`.\n\nCorrected\n```python\nmodel.fit(X_train, y_train)\n```\n\nWhy serious: The test partition must never influence training; otherwise reported test performance is optimistically biased (leakage).",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D39",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Define IQR in one line and how fences use Q1 and Q3.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "`IQR = Q3 - Q1`.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D40",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Fix two lines: scaling with `StandardScaler` before K-Means, and assign cluster labels with `fit_predict` on scaled data.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Line A: `km.fit(X_scaled)` \nLine B: `df['segment'] = km_final.fit_predict(X_scaled)`\n\nWhy: Euclidean K-Means is distorted on unscaled axes; large-scale features dominate.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D41",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Recommend two metrics for no-show prediction when false negatives hurt operations; justify briefly.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "e.g. recall for catching no-shows + F1 as balance; cite operational cost of false negatives.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D42",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Dataset: `retailedge_customers.csv` — `customer_id, age, annual_income, purchase_frequency, loyalty_score, region, customer_tier, annual_spend, churned`\n\nSpot the Bugs + Interpretation\n\n(i) The code below trains a Logistic Regression model to predict customer churn. It contains two bugs that will produce wrong metric values. Identify both bugs and write the corrected lines.\n\n```python\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import accuracy_score, recall_score, confusion_matrix\n\nfeatures = ['age', 'annual_income', 'purchase_frequency', 'loyalty_score']\nX = df[features]\ny = df['churned']\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\nlr = LogisticRegression(random_state=42)\nlr.fit(X_train, y_train)\ny_pred = lr.predict(X_test)\n\nprint(f\"Accuracy : {accuracy_score(y_test, y_pred):.4f}\")\nprint(f\"Recall : {recall_score(y_pred, y_test):.4f}\") # ← Line A\nprint(\"Confusion Matrix:\")\nprint(confusion_matrix(y_pred, y_test)) # ← Line B\n```\n\n*Bug on Line A — corrected:*\n_______________________________________________\n\n*Bug on Line B — corrected:*\n_______________________________________________\n\n*What is the correct argument order convention for sklearn metric functions? (one sentence):*\n_______________________________________________\n\n(ii) After fixing the bugs, the model outputs:\n\n```\nAccuracy : 0.8250\nRecall : 0.7800\nConfusion Matrix:\n[[230 20]\n [ 22 78]]\n```\n\nRetailEdge's churn dataset has 350 loyal customers and only 100 churners out of 450 total.\nIs an accuracy of 82.5% a reliable measure of this model's performance? In your answer, name the problem this dataset has, explain why accuracy is misleading here, and state which metric is more meaningful and why.\n\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "(i) Line A: `recall_score(y_test, y_pred)` · Line B: `confusion_matrix(y_test, y_pred)` — `(y_true, y_pred)` convention.\n\n(ii) Accuracy is misleading with class imbalance (many non-churners); a naive majority model looks good. Stress recall (or F1 / PR-AUC) for catching churners when missing a churner is costly.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D43",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Show `joblib.dump` / `joblib.load` for a fitted sklearn model.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "`joblib.dump(model, 'm.joblib')` then `joblib.load('m.joblib')`.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D44",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Dataset: healthtrack_patients.csv — patient_id, age, income_band, distance_km, appointment_cost, days_since_last_visit, num_previous_appointments, diagnosis_category, no_show | healthtrack_clinics.csv — clinic_id, avg_wait_time_mins, patient_satisfaction_score, appointments_per_day, no_show_rate\n\nSpot the Bugs\n\nThe following code segments HealthTrack's 45 clinics using K-Means. It contains two bugs. Identify both and write the corrected lines.\n\n```python\nfrom sklearn.cluster import KMeans\nfrom sklearn.preprocessing import StandardScaler\n\nclinics = pd.read_csv('healthtrack_clinics.csv')\nfeatures = ['avg_wait_time_mins', 'patient_satisfaction_score',\n 'appointments_per_day', 'no_show_rate']\nX_clinic = clinics[features]\n\n# Scale features\nscaler = StandardScaler\nX_scaled = scaler.transform(X_clinic) # ← Line A\n\n# Elbow method\ninertia_vals = []\nfor k in range(1, 9):\n km = KMeans(n_clusters=k, random_state=42, n_init=10)\n km.fit(X_scaled)\n inertia_vals.append(km.inertia_)\n\nplt.plot(range(1, 9), inertia_vals, 'bo-')\nplt.xlabel('K'); plt.ylabel('Inertia')\nplt.title('Elbow Method — HealthTrack Clinics')\nplt.show\n\n# Train final model\nkm_final = KMeans(n_clusters=3, random_state=42, n_init=10)\nclinics['segment'] = km_final.fit_predict(X_clinic) # ← Line B\n\nprint(clinics.groupby('segment')[features].mean.round(2))\n```\n\n*Bug on Line A — corrected:*\n_______________________________________________\n\n*Why is this wrong? (one sentence):*\n_______________________________________________\n\n*Bug on Line B — corrected:*\n_______________________________________________\n\n*Why is this wrong? (one sentence):*\n_______________________________________________\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Line A: `X_scaled = scaler.fit_transform(X_clinic)` — `transform` alone before fit → `NotFittedError` / wrong use.\n\nLine B: `clinics['segment'] = km_final.fit_predict(X_scaled)` — cluster on scaled features so large-scale columns do not dominate distance.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D45",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "Ordinal encode `pain_level` with order Low < Med < High using a map; fill the blank lines in stub code.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Blanks: `1`, `2`, `3` · `map` — ordinal encoding preserves order.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D46",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "A manager says: “R² = 0.78 means 78% of bills are predicted exactly.” Explain in plain language why that interpretation is wrong.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Example answer: “The model captures roughly three-quarters of what drives cost differences between patients; about a quarter still comes from factors we did not include or random variation — that does not mean three-quarters of individual bills are exact.”",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D47",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "TP=40, FP=10, FN=20. Compute precision and recall.\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Precision = 40/50 = 0.8; Recall = 40/60 ≈ 0.667.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D48",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Dataset: `retailedge_customers.csv` — `customer_id, age, annual_income, purchase_frequency, loyalty_score, region, customer_tier, annual_spend, churned`\n\nSpot the Bug\n\nA junior analyst wrote the following code to clean the dataset. The code contains three bugs — one in each fix. For each bug: circle or underline the incorrect part, then write the corrected line in the space below.\n\n```python\nimport pandas as pd\nimport numpy as np\n\ndf = pd.read_csv('retailedge_customers.csv')\n\n# Fix 1: Handle the 45 missing values in annual_income\n# (Note: annual_income has extreme high-end outliers)\ndf['annual_income'] = df['annual_income'].fillna(df['annual_income'].mean)\n\n# Fix 2: Standardise customer_tier casing\n# (values include: 'bronze', 'BRONZE', 'Bronze')\ndf['customer_tier'] = df['customer_tier'].str.strip\n\n# Fix 3: Remove rows where age is recorded as -1 (invalid)\ndf = df[df['age'] == -1]\n```\n\n*Bug 1 — corrected line:*\n_______________________________________________\n\n*Bug 2 — corrected line:*\n_______________________________________________\n\n*Bug 3 — corrected line:*\n_______________________________________________\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Bug 1 — corrected: `fillna(df['annual_income'].median)` — income is skewed; mean is pulled by outliers.\n\nBug 2 — corrected: `df['customer_tier'] = df['customer_tier'].str.lower().str.strip()` — strip alone does not fix case variants.\n\nBug 3 — corrected: `df = df[df['age'] != -1]` or `df[df['age'] > 0]` — `== -1` kept only invalid rows; invert the filter.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D49",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "TP=70, FP=25, FN=30, TN=275. Compute precision and recall. Which metric would you stress if missing churners is costly?\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "(i) TP=70, FP=25, FN=30, TN=275 → Precision = 70/95 ≈ 0.737; Recall = 70/100 = 0.70.\n\n(ii) To catch churners, recall usually matters more (missed churners = missed intervention), at the cost of some false alarms — state trade-off briefly.",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  },
+  {
+    "id": "D50",
+    "type": "self_check",
+    "scored": false,
+    "section": "D",
+    "question": "> Dataset: healthtrack_patients.csv — patient_id, age, income_band, distance_km, appointment_cost, days_since_last_visit, num_previous_appointments, diagnosis_category, no_show | healthtrack_clinics.csv — clinic_id, avg_wait_time_mins, patient_satisfaction_score, appointments_per_day, no_show_rate\n\nInterpret Results\n\nThe following model comparison was run and produced these results:\n\n```\n=== Decision Tree === (Training Accuracy: 99%)\n precision recall f1-score support\n Attended 0.94 0.96 0.95 980\n Missed 0.70 0.62 0.66 120\n accuracy 0.92 1100\n\n=== Random Forest === (Training Accuracy: 91%)\n precision recall f1-score support\n Attended 0.96 0.97 0.97 980\n Missed 0.76 0.72 0.74 120\n accuracy 0.94 1100\n```\n\nWrite a 4–5 sentence recommendation report to the HealthTrack Data Science Manager. Your report must:\n- Recommend which model to deploy\n- Reference at least two specific metrics from the output above\n- Explain the clinical significance of Recall in the context of missed appointments\n- Identify the problem with the Decision Tree using the correct technical term\n\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\n---",
+    "options": [],
+    "correct_answer": "",
+    "explanation": "Recommend Random Forest: better recall on “Missed” (0.72 vs 0.62), higher test accuracy, and train/test gap closer than the tree → better generalisation. Name overfitting on the Decision Tree (99% train vs 92% test). Explain recall clinically: catching true no-shows saves slots and follow-up care.\n\n---",
+    "difficulty": "hard",
+    "topic": "Section D — Practical"
+  }
+]

@@ -261,6 +261,120 @@ html[data-theme="dark"] .theme-toggle .icon-moon {
   gap: 0.65rem;
 }
 
+.mode-phase {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.mode-phase > .field-label {
+  margin-bottom: 0.65rem;
+}
+
+.mode-picker {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 520px) {
+  .mode-picker {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.mode-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1rem 1rem 2.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  cursor: pointer;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  position: relative;
+}
+
+.mode-card:has(input:focus-visible) {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.mode-card:has(input:checked) {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft);
+}
+
+.mode-card input {
+  position: absolute;
+  left: 1rem;
+  top: 1.15rem;
+  accent-color: var(--accent);
+}
+
+.mode-card-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.mode-card-desc {
+  line-height: 1.4;
+}
+
+.exam-summary {
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--accent-soft);
+}
+
+.exam-summary-lead {
+  margin: 0 0 0.65rem;
+  font-size: 0.95rem;
+}
+
+.exam-summary-table {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.exam-summary-table li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.exam-summary-table li:last-child {
+  border-bottom: 0;
+}
+
+.practice-scope-field {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.scope-radios {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.scope-row {
+  margin: 0;
+}
+
+.timer-chip.timer-countdown {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
 .field-label {
   font-size: 0.8rem;
   font-weight: 600;

@@ -36,76 +36,87 @@
         <h2 class="panel-title">Configure your session</h2>
 
         <div class="form-grid">
-          <label class="field">
-            <span class="field-label">Topic</span>
-            <select id="topicSelect" class="input-select">
-              <option value="">All topics</option>
-            </select>
-          </label>
+          <fieldset class="field field-full mode-phase">
+            <legend class="field-label">Session type</legend>
+            <div class="mode-picker" role="radiogroup" aria-label="Session type">
+              <label class="mode-card">
+                <input type="radio" name="sessionFlow" value="final_exam" id="flowFinalExam" />
+                <span class="mode-card-title">Final exam mode</span>
+                <span class="mode-card-desc muted small">40 questions · 10 per section (A–D) · 2-hour timer · no feedback until the end</span>
+              </label>
+              <label class="mode-card">
+                <input type="radio" name="sessionFlow" value="practice" id="flowPractice" checked />
+                <span class="mode-card-title">Practice mode</span>
+                <span class="mode-card-desc muted small">Choose one section or the full bank · self-paced · optional instant reveal</span>
+              </label>
+            </div>
+          </fieldset>
 
-          <label class="field">
-            <span class="field-label">Difficulty</span>
-            <select id="difficultySelect" class="input-select">
-              <option value="">All levels</option>
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-            </select>
-          </label>
+          <div id="panelFinalExam" class="field field-full hidden" aria-live="polite">
+            <div class="exam-summary">
+              <p class="exam-summary-lead">
+                You are about to start a <strong>40-question</strong> balanced exam with a <strong>2-hour</strong> countdown timer.
+              </p>
+              <p class="muted small">
+                Questions are drawn at random: exactly <strong>10</strong> from each of sections <strong>A</strong>, <strong>B</strong>,
+                <strong>C</strong>, and <strong>D</strong>, then shuffled. You will not see correct answers or explanations until you finish.
+              </p>
+            </div>
+            <ul class="exam-summary-table muted small">
+              <li><span>Questions</span><span>40 (fixed)</span></li>
+              <li><span>Timer</span><span>120 minutes (countdown)</span></li>
+              <li><span>Distribution</span><span>10 per section, random</span></li>
+            </ul>
+          </div>
 
-          <label class="field field-full">
-            <span class="field-label">Search questions</span>
-            <input
-              type="search"
-              id="searchInput"
-              class="input-text"
-              placeholder="e.g. recall, k-means, overfitting…"
-              autocomplete="off"
-            />
-          </label>
+          <div id="panelPractice" class="field field-full practice-config">
+            <fieldset class="practice-scope-field">
+              <legend class="field-label">Topic scope</legend>
+              <div class="scope-radios">
+                <label class="field-row scope-row">
+                  <input type="radio" name="practiceScope" value="single_section" id="practiceScopeSingle" checked />
+                  <span class="check-label">Single section</span>
+                </label>
+                <label class="field-row scope-row">
+                  <input type="radio" name="practiceScope" value="all_topics" id="practiceScopeAll" />
+                  <span class="check-label">All topics</span>
+                </label>
+              </div>
+            </fieldset>
 
-          <label class="field field-row field-full">
-            <input type="checkbox" id="timerToggle" class="input-check" />
-            <span class="check-label">Enable timer (count-up)</span>
-          </label>
+            <label class="field" id="practiceSectionField">
+              <span class="field-label">Section</span>
+              <select id="practiceSectionSelect" class="input-select" aria-label="Section for practice"></select>
+            </label>
 
-          <label class="field">
-            <span class="field-label">Questions this session</span>
-            <input
-              type="number"
-              id="sessionSizeInput"
-              class="input-text"
-              min="1"
-              value="10"
-              inputmode="numeric"
-            />
-            <span class="muted small">Random sample from your filters (max = pool size).</span>
-          </label>
+            <label class="field">
+              <span class="field-label">Questions this session</span>
+              <input
+                type="number"
+                id="practiceSessionSize"
+                class="input-text"
+                min="10"
+                max="50"
+                value="20"
+                inputmode="numeric"
+              />
+              <span id="practiceCountHint" class="muted small">Random sample each time (10–50 for one section).</span>
+            </label>
 
-          <label class="field field-row field-full">
-            <input type="checkbox" id="shuffleToggle" class="input-check" checked />
-            <span class="check-label">Shuffle order</span>
-          </label>
+            <label class="field field-row field-full">
+              <input type="checkbox" id="examPatternToggle" class="input-check" />
+              <span class="check-label"
+                ><strong>Exam-style run</strong> — hide correct/incorrect and explanations until you finish this session.</span
+              >
+            </label>
 
-          <label class="field field-row field-full">
-            <input type="checkbox" id="examPatternToggle" class="input-check" />
-            <span class="check-label"
-              ><strong>Final exam pattern</strong> — no correct/incorrect or explanations until you finish the session (like the paper exam).</span
-            >
-          </label>
-
-          <label class="field field-row field-full">
-            <input type="checkbox" id="autoRevealToggle" class="input-check" />
-            <span class="check-label"
-              >Reveal answer as soon as I select an option <span class="muted">(practice only; off during final exam pattern)</span></span
-            >
-          </label>
-
-          <div class="field field-full">
-            <button type="button" id="examPresetBtn" class="btn btn-ghost" style="width: 100%">
-              Load Section A exam preset (10 MCQs, shuffled, timer, exam pattern)
-            </button>
-            <span class="muted small">Sets topic to Section A, 10 questions, shuffle, timer, and final exam pattern. Adjust if you like.</span>
+            <label class="field field-row field-full">
+              <input type="checkbox" id="autoRevealToggle" class="input-check" />
+              <span class="check-label"
+                >Reveal answer as soon as I select an option
+                <span class="muted">(practice only; disabled during exam-style run)</span></span
+              >
+            </label>
           </div>
         </div>
 

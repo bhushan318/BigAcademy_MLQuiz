@@ -10,8 +10,14 @@
   const FILTERED_KEY = "mlQuizFilteredQuestions";
   const RESULTS_KEY = "mlQuizResults";
 
-  /** Must match `topic` on Section A items in questions.json */
-  const TOPIC_SECTION_A = "Section A — Multiple choice";
+  const EXAM_SECTION_KEYS = ["A", "B", "C", "D"];
+  const FINAL_EXAM_PER_SECTION = 10;
+  const FINAL_EXAM_TIMER_SEC = 120 * 60;
+  const PRACTICE_DEFAULT_COUNT = 20;
+  const PRACTICE_SINGLE_MIN = 10;
+  const PRACTICE_SINGLE_MAX = 50;
+  const PRACTICE_ALL_MIN = 10;
+  const PRACTICE_ALL_MAX = 200;
 
   const $ = (sel, el = document) => el.querySelector(sel);
   const $$ = (sel, el = document) => [...el.querySelectorAll(sel)];
@@ -68,6 +74,49 @@
     return String(s).trim().replace(/\s+/g, " ");
   }
 
+  function formatClockSeconds(sec) {
+    const t = Math.max(0, Math.floor(sec));
+    const h = Math.floor(t / 3600);
+    const m = Math.floor((t % 3600) / 60);
+    const s = t % 60;
+    if (h > 0) return `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+    return `${m}:${String(s).padStart(2, "0")}`;
+  }
+
+  function sectionKey(q) {
+    return norm(q.section || "").toUpperCase() || "";
+  }
+
+  function questionsInSection(all, sec) {
+    const u = norm(sec).toUpperCase();
+    return all.filter((q) => sectionKey(q) === u);
+  }
+
+  function isFinalExamBankReady(all) {
+    return EXAM_SECTION_KEYS.every((s) => questionsInSection(all, s).length >= FINAL_EXAM_PER_SECTION);
+  }
+
+  function buildFinalExamSession(allQuestions) {
+    const picked = [];
+    for (const sec of EXAM_SECTION_KEYS) {
+      const pool = questionsInSection(allQuestions, sec);
+      const shuffled = shuffleArray(pool);
+      picked.push(...shuffled.slice(0, Math.min(FINAL_EXAM_PER_SECTION, shuffled.length)));
+    }
+    return shuffleArray(picked);
+  }
+
+  function buildPracticeSession(allQuestions, settings) {
+    let pool = allQuestions.slice();
+    if (settings.practiceScope === "single_section" && settings.practiceSection) {
+      pool = questionsInSection(allQuestions, settings.practiceSection);
+    }
+    const raw = parseInt(String(settings.sessionSize ?? String(PRACTICE_DEFAULT_COUNT)), 10);
+    const want = Number.isFinite(raw) ? raw : PRACTICE_DEFAULT_COUNT;
+    const n = Math.min(want, pool.length);
+    return shuffleArray(pool).slice(0, n);
+  }
+
   function filterQuestions(all, { topic, difficulty, searchQuery }) {
     let list = all.slice();
     const t = norm(topic).toLowerCase();
@@ -85,12 +134,6 @@
     return list;
   }
 
-  function uniqueTopics(all) {
-    const s = new Set();
-    all.forEach((q) => s.add(norm(q.topic) || "general"));
-    return [...s].sort((a, b) => a.localeCompare(b));
-  }
-
   /** Fisher–Yates copy */
   function shuffleArray(arr) {
     const a = arr.slice();
@@ -102,6 +145,12 @@
   }
 
   function buildSessionPool(allQuestions, settings) {
+    if (settings.sessionFlow === "final_exam") {
+      return buildFinalExamSession(allQuestions);
+    }
+    if (settings.sessionFlow === "practice") {
+      return buildPracticeSession(allQuestions, settings);
+    }
     let pool = filterQuestions(allQuestions, settings);
     const raw = parseInt(String(settings.sessionSize ?? "10"), 10);
     const want = Number.isFinite(raw) && raw > 0 ? raw : 10;
@@ -112,15 +161,17 @@
 
   // ----- Home -----
   async function initHome() {
-    const topicSelect = $("#topicSelect");
-    const difficultySelect = $("#difficultySelect");
-    const searchInput = $("#searchInput");
-    const timerToggle = $("#timerToggle");
-    const sessionSizeInput = $("#sessionSizeInput");
-    const shuffleToggle = $("#shuffleToggle");
+    const flowFinal = $("#flowFinalExam");
+    const flowPractice = $("#flowPractice");
+    const panelFinal = $("#panelFinalExam");
+    const panelPractice = $("#panelPractice");
+    const practiceScopeSingle = $("#practiceScopeSingle");
+    const practiceScopeAll = $("#practiceScopeAll");
+    const practiceSectionSelect = $("#practiceSectionSelect");
+    const practiceSessionSize = $("#practiceSessionSize");
+    const practiceCountHint = $("#practiceCountHint");
     const examPatternToggle = $("#examPatternToggle");
     const autoRevealToggle = $("#autoRevealToggle");
-    const examPresetBtn = $("#examPresetBtn");
     const hint = $("#questionCountHint");
     const startBtn = $("#startBtn");
 
@@ -128,6 +179,129 @@
       const ex = examPatternToggle.checked;
       autoRevealToggle.disabled = ex;
       if (ex) autoRevealToggle.checked = false;
+    }
+
+    function isFinalFlow() {
+      return flowFinal.checked;
+    }
+
+    function syncFlowPanels() {
+      const final = isFinalFlow();
+      panelFinal.classList.toggle("hidden", !final);
+      panelPractice.classList.toggle("hidden", final);
+      startBtn.textContent = final ? "Start final exam" : "Start quiz";
+    }
+
+    function syncPracticeScopeLimits() {
+      const single = practiceScopeSingle.checked;
+      const inp = practiceSessionSize;
+      if (single) {
+        inp.min = String(PRACTICE_SINGLE_MIN);
+        inp.max = String(PRACTICE_SINGLE_MAX);
+        practiceCountHint.textContent =
+          "Random sample each time (10–50 for one section). Order is shuffled every session.";
+      } else {
+        inp.min = String(PRACTICE_ALL_MIN);
+        inp.max = String(PRACTICE_ALL_MAX);
+        practiceCountHint.textContent =
+          "Random mix from the whole bank (10–200). Order is shuffled every session.";
+      }
+    }
+
+    /** Call when switching single ↔ all; snaps count if out of range (per spec). */
+    function clampPracticeCountAfterScopeChange() {
+      syncPracticeScopeLimits();
+      const single = practiceScopeSingle.checked;
+      let v = parseInt(String(practiceSessionSize.value), 10);
+      if (!Number.isFinite(v)) v = PRACTICE_DEFAULT_COUNT;
+      if (single) {
+        if (v > PRACTICE_SINGLE_MAX) practiceSessionSize.value = String(PRACTICE_DEFAULT_COUNT);
+        else if (v < PRACTICE_SINGLE_MIN) practiceSessionSize.value = String(PRACTICE_SINGLE_MIN);
+      } else {
+        if (v > PRACTICE_ALL_MAX) practiceSessionSize.value = String(PRACTICE_ALL_MAX);
+        else if (v < PRACTICE_ALL_MIN) practiceSessionSize.value = String(PRACTICE_ALL_MIN);
+      }
+    }
+
+    function collectSettings() {
+      if (isFinalFlow()) {
+        return {
+          sessionFlow: "final_exam",
+          examPattern: true,
+          autoRevealOnSelect: false,
+          timerEnabled: true,
+          timerMode: "countdown",
+          timerLimitSec: FINAL_EXAM_TIMER_SEC,
+          sessionSize: EXAM_SECTION_KEYS.length * FINAL_EXAM_PER_SECTION,
+          shuffle: true,
+        };
+      }
+      syncExamAutoRevealUi();
+      const single = practiceScopeSingle.checked;
+      return {
+        sessionFlow: "practice",
+        practiceScope: single ? "single_section" : "all_topics",
+        practiceSection: single ? practiceSectionSelect.value : "",
+        sessionSize: practiceSessionSize.value,
+        timerEnabled: false,
+        timerMode: "off",
+        examPattern: examPatternToggle.checked,
+        autoRevealOnSelect: autoRevealToggle.checked,
+        shuffle: true,
+      };
+    }
+
+    function updateHint() {
+      if (isFinalFlow()) {
+        if (!isFinalExamBankReady(allQuestions)) {
+          const counts = EXAM_SECTION_KEYS.map((s) => `${s}: ${questionsInSection(allQuestions, s).length}`).join(", ");
+          hint.textContent = `Final exam needs at least ${FINAL_EXAM_PER_SECTION} questions in each section (A–D). Current counts: ${counts}.`;
+          startBtn.disabled = true;
+          return;
+        }
+        hint.textContent =
+          "Ready: 40 questions (10 random from each section A–D), full session shuffled, 2-hour countdown, exam-style feedback until the end.";
+        startBtn.disabled = false;
+        return;
+      }
+
+      const settings = collectSettings();
+      let pool = allQuestions.slice();
+      if (settings.practiceScope === "single_section" && settings.practiceSection) {
+        pool = questionsInSection(allQuestions, settings.practiceSection);
+      }
+      const poolN = pool.length;
+      if (poolN === 0) {
+        hint.textContent = "No questions in that section.";
+        startBtn.disabled = true;
+        return;
+      }
+      let want = parseInt(String(practiceSessionSize.value), 10);
+      if (!Number.isFinite(want)) want = PRACTICE_DEFAULT_COUNT;
+      const maxAllowed = practiceScopeSingle.checked ? PRACTICE_SINGLE_MAX : PRACTICE_ALL_MAX;
+      const minAllowed = practiceScopeSingle.checked ? PRACTICE_SINGLE_MIN : PRACTICE_ALL_MIN;
+      let effMin = minAllowed;
+      let effMax = Math.min(maxAllowed, poolN);
+      if (poolN < minAllowed) {
+        effMin = 1;
+        effMax = poolN;
+      }
+      practiceSessionSize.min = String(effMin);
+      practiceSessionSize.max = String(Math.max(effMin, effMax));
+      if (want > effMax) {
+        want = effMax;
+        practiceSessionSize.value = String(effMax);
+      }
+      if (want < effMin) {
+        want = effMin;
+        practiceSessionSize.value = String(effMin);
+      }
+      const take = Math.min(want, poolN);
+      if (want > poolN) practiceSessionSize.value = String(poolN);
+      const scored = pool.filter((x) => x.scored !== false && x.type === "mcq").length;
+      const selfc = pool.length - scored;
+      hint.textContent = `${poolN} question${poolN === 1 ? "" : "s"} in pool (${scored} auto-scored MCQ, ${selfc} self-check). This session: ${take} drawn at random, shuffled.`;
+      startBtn.disabled = take < 1;
     }
 
     let allQuestions = [];
@@ -139,90 +313,60 @@
       return;
     }
 
-    uniqueTopics(allQuestions).forEach((t) => {
+    practiceSectionSelect.innerHTML = "";
+    EXAM_SECTION_KEYS.forEach((sec) => {
+      const first = allQuestions.find((q) => sectionKey(q) === sec);
       const opt = document.createElement("option");
-      opt.value = t;
-      opt.textContent = t;
-      topicSelect.appendChild(opt);
+      opt.value = sec;
+      opt.textContent = first ? first.topic : `Section ${sec}`;
+      practiceSectionSelect.appendChild(opt);
     });
 
-    function updateCount() {
-      const settings = {
-        topic: topicSelect.value,
-        difficulty: difficultySelect.value,
-        searchQuery: searchInput.value,
-        timerEnabled: timerToggle.checked,
-        sessionSize: sessionSizeInput.value,
-        shuffle: shuffleToggle.checked,
-        examPattern: examPatternToggle.checked,
-        autoRevealOnSelect: autoRevealToggle.checked,
-      };
-      const filtered = filterQuestions(allQuestions, settings);
-      const n = filtered.length;
-      const scored = filtered.filter((x) => x.scored !== false).length;
-      sessionSizeInput.max = String(Math.max(1, n));
-      let want = parseInt(String(sessionSizeInput.value), 10);
-      if (!Number.isFinite(want) || want < 1) want = 10;
-      if (want > n) {
-        want = n;
-        sessionSizeInput.value = String(n);
-      }
-      if (n === 0) hint.textContent = "No questions match — adjust filters.";
-      else {
-        const take = Math.min(want, n);
-        hint.textContent = `${n} match your filters (${scored} auto-scored MCQ, ${n - scored} self-check). This session: ${take} question${take === 1 ? "" : "s"}${shuffleToggle.checked ? ", shuffled" : ""}.`;
-      }
-      startBtn.disabled = n === 0;
-      return settings;
+    function onFlowChange() {
+      syncFlowPanels();
+      updateHint();
     }
 
-    topicSelect.addEventListener("change", updateCount);
-    difficultySelect.addEventListener("change", updateCount);
-    searchInput.addEventListener("input", updateCount);
-    timerToggle.addEventListener("change", updateCount);
-    sessionSizeInput.addEventListener("input", updateCount);
-    sessionSizeInput.addEventListener("change", updateCount);
-    shuffleToggle.addEventListener("change", updateCount);
+    flowFinal.addEventListener("change", onFlowChange);
+    flowPractice.addEventListener("change", onFlowChange);
+    practiceScopeSingle.addEventListener("change", () => {
+      clampPracticeCountAfterScopeChange();
+      $("#practiceSectionField").classList.remove("hidden");
+      updateHint();
+    });
+    practiceScopeAll.addEventListener("change", () => {
+      clampPracticeCountAfterScopeChange();
+      $("#practiceSectionField").classList.add("hidden");
+      updateHint();
+    });
+    practiceSectionSelect.addEventListener("change", updateHint);
+    practiceSessionSize.addEventListener("input", updateHint);
+    practiceSessionSize.addEventListener("change", updateHint);
     examPatternToggle.addEventListener("change", () => {
       syncExamAutoRevealUi();
-      updateCount();
+      updateHint();
     });
-    autoRevealToggle.addEventListener("change", updateCount);
-    examPresetBtn.addEventListener("click", () => {
-      let found = false;
-      for (let i = 0; i < topicSelect.options.length; i++) {
-        if (topicSelect.options[i].value === TOPIC_SECTION_A) {
-          topicSelect.selectedIndex = i;
-          found = true;
-          break;
-        }
-      }
-      if (!found) {
-        for (let i = 0; i < topicSelect.options.length; i++) {
-          if (topicSelect.options[i].textContent.includes("Section A")) {
-            topicSelect.selectedIndex = i;
-            break;
-          }
-        }
-      }
-      difficultySelect.value = "";
-      searchInput.value = "";
-      sessionSizeInput.value = "10";
-      shuffleToggle.checked = true;
-      timerToggle.checked = true;
-      examPatternToggle.checked = true;
-      syncExamAutoRevealUi();
-      updateCount();
-    });
+    autoRevealToggle.addEventListener("change", updateHint);
+
+    syncFlowPanels();
+    syncPracticeScopeLimits();
     syncExamAutoRevealUi();
-    updateCount();
+    updateHint();
 
     startBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      const settings = updateCount();
-      const filtered = filterQuestions(allQuestions, settings);
-      if (filtered.length === 0) return;
+      const settings = collectSettings();
+      if (settings.sessionFlow === "final_exam") {
+        if (!isFinalExamBankReady(allQuestions)) return;
+      } else {
+        let pool = allQuestions.slice();
+        if (settings.practiceScope === "single_section" && settings.practiceSection) {
+          pool = questionsInSection(allQuestions, settings.practiceSection);
+        }
+        if (pool.length === 0) return;
+      }
       const session = buildSessionPool(allQuestions, settings);
+      if (!session.length) return;
       sessionStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
       sessionStorage.setItem(FILTERED_KEY, JSON.stringify(session));
       window.location.href = "quiz.html";
@@ -249,6 +393,8 @@
       return;
     }
 
+    let quizFinished = false;
+
     let settings = {};
     try {
       settings = JSON.parse(sessionStorage.getItem(SETTINGS_KEY) || "{}");
@@ -267,19 +413,39 @@
     }
 
     const timerEnabled = !!settings.timerEnabled;
+    const timerMode = settings.timerMode || (timerEnabled ? "countup" : "off");
+    const timerLimitSec =
+      typeof settings.timerLimitSec === "number" && settings.timerLimitSec > 0
+        ? settings.timerLimitSec
+        : FINAL_EXAM_TIMER_SEC;
+    const countdownActive = timerEnabled && timerMode === "countdown";
+
     const timerEl = $("#timerDisplay");
     if (timerEnabled) {
       timerEl.classList.remove("hidden");
+      timerEl.classList.toggle("timer-countdown", countdownActive);
+      timerEl.setAttribute("aria-live", "polite");
     }
 
     let startTime = Date.now();
     let timerId = null;
-    if (timerEnabled) {
+    if (countdownActive) {
+      const endAt = startTime + timerLimitSec * 1000;
+      const tick = () => {
+        const left = Math.ceil((endAt - Date.now()) / 1000);
+        timerEl.textContent = formatClockSeconds(left);
+        if (left <= 0) {
+          if (timerId) clearInterval(timerId);
+          timerId = null;
+          finishQuiz();
+        }
+      };
+      tick();
+      timerId = setInterval(tick, 500);
+    } else if (timerEnabled) {
       timerId = setInterval(() => {
         const sec = Math.floor((Date.now() - startTime) / 1000);
-        const m = Math.floor(sec / 60);
-        const s = sec % 60;
-        timerEl.textContent = `${m}:${String(s).padStart(2, "0")}`;
+        timerEl.textContent = formatClockSeconds(sec);
       }, 1000);
     }
 
@@ -490,6 +656,8 @@
     });
 
     function finishQuiz() {
+      if (quizFinished) return;
+      quizFinished = true;
       if (timerId) clearInterval(timerId);
       if (examPattern) {
         const q = questions[index];
